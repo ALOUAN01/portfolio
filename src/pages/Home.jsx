@@ -11,9 +11,11 @@ import {
   GraduationCap,
   Award,
   ExternalLink,
+  FileText,
 } from "lucide-react";
 import myPhoto from "../assets/cv1.jpg";
 import { useNavigate } from "react-router-dom";
+import myCV from "../assets/ALOUAN_Ayoub_CV_E.pdf";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -258,6 +260,12 @@ export default function Portfolio() {
               className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
             >
               <Mail size={24} />
+            </a>
+            <a
+              onClick={() => window.open(myCV, "_blank")}
+              className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
+            >
+              <FileText size={24} />
             </a>
           </div>
           <button
@@ -505,6 +513,15 @@ export default function Portfolio() {
             >
               <Github size={20} />
               GitHub
+            </a>
+            <a
+              href=""
+              onClick={() => window.open(myCV, "_blank")}
+              rel="noopener noreferrer"
+             className="flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-lg transition-colors font-semibold"
+            >
+              <FileText size={20} />
+              My CV
             </a>
           </div>
           <div className="grid md:grid-cols-3 gap-6 text-gray-300">
