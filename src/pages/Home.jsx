@@ -300,12 +300,13 @@ export default function Portfolio() {
               </div>
             </div>
           </div>
-          <button
+          {/*<button
             onClick={() => navigate(`/about/${idx}`)}
             className="mt-4 px-3 py-1 bg-cyan-500 hover:bg-cyan-600 rounded text-white text-sm"
           >
             View More
           </button>
+          */}
         </div>
       </section>
 
