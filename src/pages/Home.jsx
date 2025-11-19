@@ -209,71 +209,83 @@ export default function Portfolio() {
       {/* Hero Section */}
       <section
         id="home"
-        className="min-h-screen flex items-center justify-center px-6 pt-20"
+        className="min-h-screen flex items-center px-6 pt-28 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
       >
-        <div className="max-w-4xl text-center">
-          <div className="mb-8 animate-fade-in">
-            <div className="w-32 h-32 mx-auto mb-6">
-              <div className="relative w-40 h-40 mx-auto mb-8">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 blur-xl opacity-40 animate-pulse"></div>
-                <img
-                  src={myPhoto}
-                  alt="Ayoub Alouan"
-                  className="relative w-40 h-40 object-cover rounded-full border-4 border-white shadow-xl"
-                />
-              </div>
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* LEFT — PHOTO WITH SAME STYLE */}
+          <div className="flex justify-center">
+            <div className="relative w-120 h-160 mx-auto">
+              {/* GLOW EFFECT (SAME STYLE AS BEFORE) */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 to-cyan-400 blur-2xl opacity-40 animate-pulse"></div>
+
+              {/* IMAGE RECTANGLE */}
+              <img
+                src={myPhoto}
+                alt="Ayoub Alouan"
+                className="relative w-full h-full object-cover rounded-3xl border-2 border-white shadow-2xl"
+              />
             </div>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-up">
-            Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Ayoub Alouan
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-slide-up">
-            Software Engineer | Java | Spring Boot | React | AWS
-          </p>
-          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in">
-            Specialized in microservices architecture, large-scale data
-            processing, and cloud deployment with a passion for building
-            scalable AI-powered platforms.
-          </p>
-          <div className="flex gap-4 justify-center mb-12 animate-fade-in">
-            <a
-              href="https://github.com/ALOUAN01"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
+
+          {/* RIGHT — TEXT */}
+          <div className="text-center md:text-left">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 animate-slide-up">
+              Hi, I'm{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                Ayoub Alouan
+              </span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-gray-300 mb-6 animate-fade-in">
+              Software Engineer • Java • Spring Boot • React • AWS
+            </p>
+
+            <p className="text-lg text-gray-400 mb-8 max-w-xl animate-fade-in">
+              Specialized in microservices, large-scale data platforms (ETL 2M+
+              leads/day) and AI-powered cloud architectures.
+            </p>
+
+            {/* ICONS */}
+            <div className="flex gap-4 mb-10 justify-center md:justify-start">
+              <a
+                href="https://github.com/ALOUAN01"
+                className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
+                target="_blank"
+              >
+                <Github size={24} />
+              </a>
+
+              <a
+                href="https://linkedin.com/in/ayoub-alouan"
+                className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
+                target="_blank"
+              >
+                <Linkedin size={24} />
+              </a>
+
+              <a
+                href="mailto:alouanayoub3@gmail.com"
+                className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
+              >
+                <Mail size={24} />
+              </a>
+
+              <a
+                onClick={() => window.open(myCV, "_blank")}
+                className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors cursor-pointer"
+              >
+                <FileText size={24} />
+              </a>
+            </div>
+
+            {/* SCROLL DOWN */}
+            <button
+              onClick={() => scrollToSection("about")}
+              className="animate-bounce text-cyan-400"
             >
-              <Github size={24} />
-            </a>
-            <a
-              href="https://linkedin.com/in/ayoub-alouan-al"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
-            >
-              <Linkedin size={24} />
-            </a>
-            <a
-              href="mailto:alouanayoub3@gmail.com"
-              className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
-            >
-              <Mail size={24} />
-            </a>
-            <a
-              onClick={() => window.open(myCV, "_blank")}
-              className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
-            >
-              <FileText size={24} />
-            </a>
+              <ChevronDown size={32} />
+            </button>
           </div>
-          <button
-            onClick={() => scrollToSection("about")}
-            className="animate-bounce text-cyan-400"
-          >
-            <ChevronDown size={32} />
-          </button>
         </div>
       </section>
 
@@ -518,7 +530,7 @@ export default function Portfolio() {
               href=""
               onClick={() => window.open(myCV, "_blank")}
               rel="noopener noreferrer"
-             className="flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-lg transition-colors font-semibold"
+              className="flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-lg transition-colors font-semibold"
             >
               <FileText size={20} />
               My CV
