@@ -176,6 +176,8 @@ export default function Portfolio() {
       >
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 to-cyan-400 blur-2xl opacity-60 "></div>
+
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Ayoub Alouan
             </h1>
@@ -222,7 +224,7 @@ export default function Portfolio() {
               <img
                 src={myPhoto}
                 alt="Ayoub Alouan"
-                className="relative w-full h-full object-cover rounded-3xl border-2 border-white shadow-2xl"
+                className="relative w-full h-full object-cover rounded-2xl border-2 border-white shadow-2xl"
               />
             </div>
           </div>
