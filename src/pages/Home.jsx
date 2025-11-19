@@ -214,7 +214,7 @@ export default function Portfolio() {
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* LEFT — PHOTO WITH SAME STYLE */}
           <div className="flex justify-center">
-            <div className="relative w-120 h-160 mx-auto">
+            <div className="relative w-120 h-120 mx-auto">
               {/* GLOW EFFECT (SAME STYLE AS BEFORE) */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 to-cyan-400 blur-2xl opacity-40 animate-pulse"></div>
 
