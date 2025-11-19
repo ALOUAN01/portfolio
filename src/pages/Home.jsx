@@ -258,7 +258,7 @@ export default function Portfolio() {
               </a>
 
               <a
-                href="https://linkedin.com/in/ayoub-alouan"
+                href="https://linkedin.com/in/ayoub-alouan-al"
                 className="p-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors"
                 target="_blank"
               >
