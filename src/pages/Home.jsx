@@ -10,50 +10,16 @@ import {
   Briefcase,
   GraduationCap,
   Award,
-  ExternalLink,
   FileText,
 } from "lucide-react";
 import myPhoto from "../assets/cv1.jpg";
 import { useNavigate } from "react-router-dom";
 import myCV from "../assets/ALOUAN_Ayoub_CV_E.pdf";
-
+import { getProjectImpo } from "../data/projects";
+import Navbar from "./navbar";
 export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState("home");
-  const [isScrolled, setIsScrolled] = useState(false);
+  
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
-      const sections = [
-        "home",
-        "about",
-        "skills",
-        "experience",
-        "projects",
-        "education",
-        "contact",
-      ];
-      const current = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const skills = {
     Backend: [
       "Java",
@@ -123,91 +89,12 @@ export default function Portfolio() {
     },
   ];
 
-  const projects = [
-    {
-      name: "DataPull",
-      description: "Multi-agent B2B/B2C lead analysis and prospecting platform",
-      tech: [
-        "Spring Boot",
-        "React",
-        "AWS",
-        "Elasticsearch",
-        "PostgreSQL",
-        "Docker",
-      ],
-      highlights: [
-        "4 microservices handling 3,000 req/min",
-        "ETL processing 2M+ leads/day",
-        "90% uptime on AWS cloud",
-        "<150ms response time",
-      ],
-    },
-    {
-      name: "Leave Management System",
-      description: "Enterprise leave management for Court of Appeal",
-      tech: ["Spring Boot", "Angular", "PostgreSQL"],
-      highlights: [
-        "Automated workflows for 200+ employees",
-        "60% reduction in processing time",
-        "Eliminated manual errors",
-      ],
-    },
-    {
-      name: "School Management System",
-      description: "Complete school administration platform",
-      tech: ["Django", "React", "PostgreSQL"],
-      highlights: [
-        "Student enrollment system",
-        "Class and teacher management",
-        "Real-time statistics",
-      ],
-    },
-  ];
+  const projects = getProjectImpo();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-      {/* Navigation */}
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-slate-900/95 backdrop-blur-sm shadow-lg"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 to-cyan-400 blur-2xl opacity-60 "></div>
-
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Ayoub Alouan
-            </h1>
-            <div className="hidden md:flex gap-8">
-              {[
-                "Home",
-                "About",
-                "Skills",
-                "Experience",
-                "Projects",
-                "Education",
-                "Contact",
-              ].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`transition-colors ${
-                    activeSection === item.toLowerCase()
-                      ? "text-cyan-400"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </nav>
-
+      {/* Navbar */}
+      <Navbar></Navbar>
       {/* Hero Section */}
       <section
         id="home"
@@ -280,13 +167,13 @@ export default function Portfolio() {
               </a>
             </div>
 
-            {/* SCROLL DOWN */}
+            {/* SCROLL DOWN 
             <button
               onClick={() => scrollToSection("about")}
               className="animate-bounce text-cyan-400"
             >
               <ChevronDown size={32} />
-            </button>
+            </button>*/}
           </div>
         </div>
       </section>
@@ -443,6 +330,12 @@ export default function Portfolio() {
                     </li>
                   ))}
                 </ul>
+                <button
+                  onClick={() => navigate(`/project/${project.id}`)}
+                  className="mt-4 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg text-sm transition"
+                >
+                  Voir plus
+                </button>
               </div>
             ))}
           </div>
