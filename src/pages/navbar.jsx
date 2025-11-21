@@ -23,7 +23,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Ne détecte les sections que si on est sur la page d'accueil
       if (location.pathname === "/") {
         const sections = [
           "home",
@@ -51,10 +50,8 @@ export default function Navbar() {
   }, [location.pathname]);
 
   const scrollToSection = (id) => {
-    // Si on n'est pas sur la page d'accueil, rediriger d'abord
     if (location.pathname !== "/") {
       navigate("/");
-      // Attendre que la navigation soit terminée avant de scroller
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
@@ -71,7 +68,6 @@ export default function Navbar() {
         }
       }, 100);
     } else {
-      // Si on est déjà sur la page d'accueil, scroller directement
       const element = document.getElementById(id);
       if (element) {
         const offset = -80;
@@ -87,13 +83,12 @@ export default function Navbar() {
       }
     }
 
-    // Fermer le menu mobile après le clic
     setIsMobileMenuOpen(false);
   };
 
   return (
     <>
-      {/* Navigation */}
+      {/* Navigation Desktop */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "backdrop-blur-xl shadow-2xl" : "bg-transparent"
@@ -101,7 +96,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 py-2">
           <div className="flex items-center justify-between">
-            {/* Logo - Cliquable pour retourner à l'accueil */}
+            {/* Logo */}
             <button
               onClick={() => {
                 navigate("/");
@@ -109,7 +104,7 @@ export default function Navbar() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }, 100);
               }}
-              className="z-50 text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:scale-105 transition-transform"
+              className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:scale-105 transition-transform"
             >
               Ayoub Alouan
             </button>
@@ -159,7 +154,7 @@ export default function Navbar() {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden z-50 p-3 bg-slate-800/80 backdrop-blur-xl rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all"
+              className="md:hidden p-3 bg-slate-800/80 backdrop-blur-xl rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all relative z-[60]"
             >
               {isMobileMenuOpen ? (
                 <X size={28} className="text-white" />
@@ -171,78 +166,79 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Sidebar */}
-      <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
-          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
-        }`}
-      >
-        {/* Overlay */}
-        <div
-          className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-500 ${
-            isMobileMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
+      {/* Mobile Menu - Overlay + Sidebar */}
+      {isMobileMenuOpen && (
+        <>
+          {/* Overlay - Fond noir */}
+          <div
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[55] md:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
 
-        {/* Sidebar */}
-        <div
-          className={`absolute top-0 right-0 h-full w-80 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-l border-cyan-500/30 shadow-2xl transform transition-transform duration-500 ease-out ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="p-8 h-full overflow-y-auto">
-            <div className="flex justify-between items-center mb-12">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Menu
-              </h2>
-            </div>
+          {/* Sidebar */}
+          <div className="fixed top-0 right-0 h-full w-80 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-l border-cyan-500/30 shadow-2xl z-[55] md:hidden overflow-y-auto">
+            <div className="p-8">
+              {/* Header du menu */}
+              <div className="flex justify-between items-center mb-6 mt-2">
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  Menu
+                </h2>
+                
+                <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-3 bg-slate-800 rounded-full hover:bg-slate-700 transition"
+              >
+                <X size={24} />
+              </button>
+              </div>
 
-            <div className="space-y-4">
-              {navItems.map((item) => {
-                const isActive =
-                  location.pathname === "/" &&
-                  activeSection === item.toLowerCase();
-                return (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    className={`w-full text-left px-6 py-4 rounded-xl text-lg font-medium transition-all
-                      ${
-                        isActive
-                          ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/50"
-                          : "text-gray-300 hover:bg-slate-800 hover:text-white"
-                      }`}
+              {/* Liste des liens */}
+              <div className="space-y-4">
+                {navItems.map((item) => {
+                  const isActive =
+                    location.pathname === "/" &&
+                    activeSection === item.toLowerCase();
+                  return (
+                    <button
+                      key={item}
+                      onClick={() => scrollToSection(item.toLowerCase())}
+                      className={`w-full text-left px-6 py-4 rounded-xl text-lg font-medium transition-all
+                        ${
+                          isActive
+                            ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/50"
+                            : "text-gray-300 hover:bg-slate-800 hover:text-white"
+                        }`}
+                    >
+                      {item}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Contact Info */}
+              <div className="mt-12 pt-8 border-t border-slate-700">
+                <p className="text-sm text-gray-400 mb-4">Contact</p>
+                <div className="space-y-3 text-gray-300">
+                  <a
+                    href="mailto:alouanayoub3@gmail.com"
+                    className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
                   >
-                    {item}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Contact Info */}
-            <div className="mt-12 pt-8 border-t border-slate-700">
-              <p className="text-sm text-gray-400 mb-4">Contact</p>
-              <div className="space-y-3 text-gray-300">
-                <a
-                  href="mailto:alouanayoub3@gmail.com"
-                  className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
-                >
-                  <Mail size={18} className="text-cyan-400" />
-                  <span className="text-sm">alouanayoub3@gmail.com</span>
-                </a>
-                <a
-                  href="tel:+212652634966"
-                  className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
-                >
-                  <Phone size={18} className="text-cyan-400" />
-                  <span className="text-sm">+212 652-634-966</span>
-                </a>
+                    <Mail size={18} className="text-cyan-400" />
+                    <span className="text-sm">alouanayoub3@gmail.com</span>
+                  </a>
+                  <a
+                    href="tel:+212652634966"
+                    className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
+                  >
+                    <Phone size={18} className="text-cyan-400" />
+                    <span className="text-sm">+212 652-634-966</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 }
