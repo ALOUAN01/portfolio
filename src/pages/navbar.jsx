@@ -166,79 +166,86 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu - Overlay + Sidebar */}
-      {isMobileMenuOpen && (
-        <>
-          {/* Overlay - Fond noir */}
-          <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[55] md:hidden"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
+      {/* Mobile Menu */}
+      <div
+        className={`fixed inset-0 z-[55] md:hidden transition-all duration-500 ${
+          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        {/* Overlay - Fond noir */}
+        <div
+          className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-500 ${
+            isMobileMenuOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
 
-          {/* Sidebar */}
-          <div className="fixed top-0 right-0 h-full w-80 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-l border-cyan-500/30 shadow-2xl z-[55] md:hidden overflow-y-auto">
-            <div className="p-8">
-              {/* Header du menu */}
-              <div className="flex justify-between items-center mb-6 mt-2">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  Menu
-                </h2>
-                
-                <button
+        {/* Sidebar - Glisse de GAUCHE à DROITE */}
+        <div
+          className={`absolute top-0 left-0 h-full w-80 max-w-[85vw] bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-r border-cyan-500/30 shadow-2xl transform transition-transform duration-500 ease-out ${
+            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          } overflow-y-auto`}
+        >
+          <div className="p-8">
+            {/* Header du menu */}
+            <div className="flex justify-between items-center mb-12 mt-4">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                Menu
+              </h2>
+              <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-3 bg-slate-800 rounded-full hover:bg-slate-700 transition"
               >
                 <X size={24} />
               </button>
-              </div>
+            </div>
 
-              {/* Liste des liens */}
-              <div className="space-y-4">
-                {navItems.map((item) => {
-                  const isActive =
-                    location.pathname === "/" &&
-                    activeSection === item.toLowerCase();
-                  return (
-                    <button
-                      key={item}
-                      onClick={() => scrollToSection(item.toLowerCase())}
-                      className={`w-full text-left px-6 py-4 rounded-xl text-lg font-medium transition-all
-                        ${
-                          isActive
-                            ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/50"
-                            : "text-gray-300 hover:bg-slate-800 hover:text-white"
-                        }`}
-                    >
-                      {item}
-                    </button>
-                  );
-                })}
-              </div>
+            {/* Liste des liens */}
+            <div className="space-y-4">
+              {navItems.map((item) => {
+                const isActive =
+                  location.pathname === "/" &&
+                  activeSection === item.toLowerCase();
+                return (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item.toLowerCase())}
+                    className={`w-full text-left px-6 py-4 rounded-xl text-lg font-medium transition-all
+                      ${
+                        isActive
+                          ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/50"
+                          : "text-gray-300 hover:bg-slate-800 hover:text-white"
+                      }`}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
+            </div>
 
-              {/* Contact Info */}
-              <div className="mt-12 pt-8 border-t border-slate-700">
-                <p className="text-sm text-gray-400 mb-4">Contact</p>
-                <div className="space-y-3 text-gray-300">
-                  <a
-                    href="mailto:alouanayoub3@gmail.com"
-                    className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
-                  >
-                    <Mail size={18} className="text-cyan-400" />
-                    <span className="text-sm">alouanayoub3@gmail.com</span>
-                  </a>
-                  <a
-                    href="tel:+212652634966"
-                    className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
-                  >
-                    <Phone size={18} className="text-cyan-400" />
-                    <span className="text-sm">+212 652-634-966</span>
-                  </a>
-                </div>
+            {/* Contact Info */}
+            <div className="mt-12 pt-8 border-t border-slate-700">
+              <p className="text-sm text-gray-400 mb-4">Contact</p>
+              <div className="space-y-3 text-gray-300">
+                <a
+                  href="mailto:alouanayoub3@gmail.com"
+                  className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
+                >
+                  <Mail size={18} className="text-cyan-400" />
+                  <span className="text-sm break-all">alouanayoub3@gmail.com</span>
+                </a>
+                <a
+                  href="tel:+212652634966"
+                  className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
+                >
+                  <Phone size={18} className="text-cyan-400" />
+                  <span className="text-sm">+212 652-634-966</span>
+                </a>
               </div>
             </div>
           </div>
-        </>
-      )}
+        </div>
+      </div>
     </>
   );
 }
