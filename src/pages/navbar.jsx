@@ -164,12 +164,7 @@ export default function Navbar() {
               <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 Menu
               </h2>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-3 bg-slate-800 rounded-full hover:bg-slate-700 transition"
-              >
-                <X size={24} />
-              </button>
+              
             </div>
 
             <div className="space-y-4">
