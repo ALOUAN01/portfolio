@@ -220,7 +220,7 @@ export default function ProjectDetails() {
                       className="text-cyan-400 flex-shrink-0 mt-1"
                       size={20}
                     />
-                    <span className="text-gray-300">{highlight}</span>
+                    <span className="text-gray-300 text-sm">{highlight}</span>
                   </div>
                 ))}
               </div>
