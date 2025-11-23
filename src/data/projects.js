@@ -37,8 +37,7 @@ export const projects = [
   images: [
     '/images/datapull-1.jpg',
     '/images/datapull-2.jpg',
-    '/images/datapull-dashboard.jpg',
-    '/images/datapull-etl.jpg'
+    
   ],
 
   githubUrl: 'https://github.com/ALOUAN01/datapull',
