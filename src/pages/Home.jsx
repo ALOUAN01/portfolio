@@ -17,77 +17,13 @@ import { useNavigate } from "react-router-dom";
 import myCV from "../assets/ALOUAN_Ayoub_CV_E.pdf";
 import { getProjectImpo } from "../data/projects";
 import Navbar from "./navbar";
+import { getAllSkills } from "../data/skills";
+import { getAllexperiences } from "../data/experiences";
 export default function Portfolio() {
-  
   const navigate = useNavigate();
-  const skills = {
-    Backend: [
-      "Java",
-      "Spring Boot",
-      "Microservices",
-      "Django",
-      "Flask",
-      "Keycloak",
-    ],
-    Frontend: ["JavaScript", "React", "Angular", "Flutter"],
-    "DevOps & Cloud": ["Docker", "AWS (EC2, S3)", "CI/CD"],
-    Data: [
-      "ETL",
-      "PostgreSQL",
-      "Elasticsearch",
-      "SQL Server",
-      "Python",
-      "Celery",
-    ],
-    "Machine Learning": ["Pandas", "NumPy", "Scikit-learn"],
-    Tools: ["Git/GitHub", "JUnit", "Postman", "SonarQube", "Agile/Scrum"],
-  };
+  const skills = getAllSkills();
 
-  const experiences = [
-    {
-      company: "IAWEB.DEV – Havet Digital",
-      role: "Software Engineer & Data Scientist",
-      period: "Aug 2025 – Oct 2025",
-      type: "Fixed-term contract",
-      achievements: [
-        "Finalized DataPull platform (Spring Boot, React, AWS) with >90% stability",
-        "Designed multi-agent prospecting system integrated with DataPull APIs",
-        "Optimized microservices achieving <150ms response time",
-      ],
-    },
-    {
-      company: "IAWEB.DEV – Havet Digital",
-      role: "Full-Stack Engineer",
-      period: "Mar 2025 – Aug 2025",
-      type: "Graduation Internship",
-      achievements: [
-        "Developed 4 Spring Boot microservices handling 3,000 req/min",
-        "Built ETL pipeline processing 2M+ leads/day",
-        "Deployed real-time search with Elasticsearch + PostgreSQL",
-        "Achieved 90% uptime with AWS (EC2, S3) deployment",
-      ],
-    },
-    {
-      company: "Court of Appeal Marrakech",
-      role: "Web Developer",
-      period: "Jul 2024 – Sept 2024",
-      type: "Internship",
-      achievements: [
-        "Built leave management system (Spring Boot + Angular) for 200+ employees",
-        "Reduced administrative processing time by 60%",
-      ],
-    },
-    {
-      company: "EKBlocks Marrakech",
-      role: "Web Developer",
-      period: "Jul 2023 – Sept 2023",
-      type: "Internship",
-      achievements: [
-        "Built school management application (Django + React)",
-        "Developed student enrollment, classes, and teacher modules",
-      ],
-    },
-  ];
+  const experiences = getAllexperiences();
 
   const projects = getProjectImpo();
 
@@ -310,7 +246,7 @@ export default function Portfolio() {
                 </h3>
                 <p className="text-gray-300 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech) => (
+                  {project.tech.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
                       className="px-2 py-1 bg-slate-700/50 rounded text-xs text-gray-400"
@@ -320,7 +256,7 @@ export default function Portfolio() {
                   ))}
                 </div>
                 <ul className="space-y-1">
-                  {project.highlights.map((highlight, i) => (
+                  {project.highlights.slice(0, 3).map((highlight, i) => (
                     <li
                       key={i}
                       className="flex items-start gap-2 text-sm text-gray-400"
@@ -330,6 +266,7 @@ export default function Portfolio() {
                     </li>
                   ))}
                 </ul>
+
                 <button
                   onClick={() => navigate(`/project/${project.id}`)}
                   className="mt-4 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg text-sm transition"

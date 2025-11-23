@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getProjectById } from '../data/projects';
-import { ArrowLeft, Github, ExternalLink, Calendar, Tag, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { getProjectById } from "../data/projects";
+import {
+  ArrowLeft,
+  Github,
+  ExternalLink,
+  Calendar,
+  Tag,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import Navbar from "./navbar";
 
 export default function ProjectDetails() {
@@ -15,9 +24,11 @@ export default function ProjectDetails() {
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center text-white p-10">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <p className="text-gray-400 mb-6">The project you're looking for doesn't exist.</p>
-          <button 
-            onClick={() => navigate("/")} 
+          <p className="text-gray-400 mb-6">
+            The project you're looking for doesn't exist.
+          </p>
+          <button
+            onClick={() => navigate("/")}
             className="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-lg transition-colors inline-flex items-center gap-2"
           >
             <ArrowLeft size={20} />
@@ -30,13 +41,13 @@ export default function ProjectDetails() {
 
   // Gérer la navigation entre les images
   const nextImage = () => {
-    setCurrentImageIndex((prev) => 
+    setCurrentImageIndex((prev) =>
       prev === project.images.length - 1 ? 0 : prev + 1
     );
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => 
+    setCurrentImageIndex((prev) =>
       prev === 0 ? project.images.length - 1 : prev - 1
     );
   };
@@ -49,23 +60,21 @@ export default function ProjectDetails() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
       <Navbar></Navbar>
       {/* Header avec navigation */}
-     
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          
-        </div>
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          
-        </div>
-        <div className="max-w-6xl mx-auto my-auto px-6 py-4">
-          <button
-            onClick={() => navigate(-1)}
-            className="text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-2 group"
-          >
-            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-            Back
-          </button>
-        </div>
-     
+
+      <div className="max-w-6xl mx-auto px-6 py-4"></div>
+      <div className="max-w-6xl mx-auto px-6 py-4"></div>
+      <div className="max-w-6xl mx-auto my-auto px-6 py-4">
+        <button
+          onClick={() => navigate(-1)}
+          className="text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-2 group"
+        >
+          <ArrowLeft
+            size={20}
+            className="group-hover:-translate-x-1 transition-transform"
+          />
+          Back
+        </button>
+      </div>
 
       {/* Contenu principal */}
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -119,15 +128,15 @@ export default function ProjectDetails() {
 
         {/* Carousel d'images */}
         {project.images && project.images.length > 0 && (
-          <div className="mb-12">
+          <div className="mb-8">
             {/* Image principale */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700 group">
-              <img 
-                src={project.images[currentImageIndex]} 
+            <div className=" relative rounded-2xl overflow-hidden  group flex justify-center">
+              <img
+                src={project.images[currentImageIndex]}
                 alt={`${project.name} - Image ${currentImageIndex + 1}`}
-                className="w-full h-auto object-cover transition-transform duration-300"
+                className="max-w-3xl w-full md:w-3/4 lg:w-2/3 h-auto object-cover transition-transform duration-300 rounded-xl"
               />
-              
+
               {/* Boutons de navigation */}
               {project.images.length > 1 && (
                 <>
@@ -138,7 +147,7 @@ export default function ProjectDetails() {
                   >
                     <ChevronLeft size={24} />
                   </button>
-                  
+
                   <button
                     onClick={nextImage}
                     className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-slate-800 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all"
@@ -157,15 +166,15 @@ export default function ProjectDetails() {
 
             {/* Thumbnails */}
             {project.images.length > 1 && (
-              <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
+              <div className=" flex gap-3 overflow-x-auto pb-2">
                 {project.images.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => goToImage(index)}
-                    className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all mt-4 ml-1 ${
                       currentImageIndex === index
-                        ? 'border-cyan-400 scale-105'
-                        : 'border-slate-700 hover:border-slate-500 opacity-60 hover:opacity-100'
+                        ? "border-cyan-400 scale-105"
+                        : "border-slate-700 hover:border-slate-500 opacity-60 hover:opacity-100"
                     }`}
                   >
                     <img
@@ -203,11 +212,14 @@ export default function ProjectDetails() {
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 {project.highlights.map((highlight, i) => (
-                  <div 
-                    key={i} 
+                  <div
+                    key={i}
                     className="flex items-start gap-3 p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-colors"
                   >
-                    <CheckCircle2 className="text-cyan-400 flex-shrink-0 mt-1" size={20} />
+                    <CheckCircle2
+                      className="text-cyan-400 flex-shrink-0 mt-1"
+                      size={20}
+                    />
                     <span className="text-gray-300">{highlight}</span>
                   </div>
                 ))}
@@ -219,8 +231,10 @@ export default function ProjectDetails() {
           <div className="space-y-6">
             {/* Project Info */}
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 sticky top-24">
-              <h3 className="text-xl font-bold mb-4 text-cyan-400">Project Info</h3>
-              
+              <h3 className="text-xl font-bold mb-4 text-cyan-400">
+                Project Info
+              </h3>
+
               {/* Date */}
               {project.date && (
                 <div className="mb-4 pb-4 border-b border-slate-700">
@@ -243,7 +257,9 @@ export default function ProjectDetails() {
 
               {/* Technologies */}
               <div>
-                <h4 className="text-sm text-gray-400 mb-3">Technologies Used</h4>
+                <h4 className="text-sm text-gray-400 mb-3">
+                  Technologies Used
+                </h4>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span
@@ -287,9 +303,12 @@ export default function ProjectDetails() {
 
         {/* Call to Action */}
         <div className="mt-16 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl p-8 border border-cyan-500/20 text-center">
-          <h3 className="text-2xl font-bold mb-4">Interested in Working Together?</h3>
+          <h3 className="text-2xl font-bold mb-4">
+            Interested in Working Together?
+          </h3>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            I'm always open to discussing new projects, creative ideas, or
+            opportunities to be part of your vision.
           </p>
           <button
             onClick={() => navigate("/#contact")}

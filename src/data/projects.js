@@ -1,73 +1,145 @@
 export const projects = [
   {
-    id: 1,
-    name: 'DataPull',
-    description: 'Multi-agent B2B/B2C lead analysis and prospecting platform',
-    longDescription: 'DataPull is an innovative AI-powered prospecting platform that processes over 2 million leads per day. Built with microservices architecture, it provides real-time search capabilities and advanced data enrichment features.',
-    tech: ['Spring Boot', 'React', 'AWS', 'Elasticsearch', 'PostgreSQL', 'Docker', 'Keycloak'],
-    highlights: [
-      '4 microservices handling 3,000 req/min',
-      'ETL processing 2M+ leads/day',
-      '90% uptime on AWS cloud',
-      '<150ms response time'
-    ],
-     images: [
-      '/images/datapull-1.jpg',
-      '/images/datapull-2.jpg',
-      
-    ], // Ajoutez vos images dans public/projects/
-    githubUrl: 'https://github.com/ALOUAN01/datapull',
-    liveUrl: 'https://datapull.demo.com',
-    category: 'Full-Stack',
-    featured: true,
-    date: '2025-08'
-  },
+  id: 1,
+  name: 'DataPull',
+  description: 'Scalable AI-Powered B2B/B2C Lead Intelligence & Data Enrichment Platform',
+
+  longDescription:
+    "DataPull is a cloud-native intelligent prospecting platform capable of extracting, cleaning, enriching, and analyzing over 2 million business leads per day. Built on a distributed microservices architecture and a real-time search engine, it combines advanced ETL pipelines, machine-driven enrichment, geospatial exploration, lead scoring, and dynamic data visualization to deliver actionable business insights at scale.",
+
+  tech: [
+    'Spring Boot (Microservices)',
+    'React + TailwindCSS',
+    'AWS (EC2, S3, CloudWatch)',
+    'Elasticsearch (Full-Text Search & Aggregations)',
+    'PostgreSQL + JSONB',
+    'Docker & Docker Compose',
+    'Keycloak (IAM, SSO, RBAC)',
+    'Celery + Python ETL',
+    'Selenium / BeautifulSoup'
+  ],
+
+  highlights: [
+    'Distributed architecture with 4 autonomous and horizontally scalable microservices',
+    '3,000+ requests/min under real workload with load balancing & optimized caching',
+    'Big-Data ETL pipeline processing 2M+ records/day with intelligent enrichment',
+    'Sub-150ms real-time search powered by Elasticsearch (full-text & aggregations)',
+    'Automated scraping + API integrations (INSEE, INPI, DataSoft)',
+    'Email enrichment engine (MX validation, pattern discovery, scoring)',
+    'Advanced security: Keycloak RBAC, JWT tokens, refresh flows, SSO',
+    'Full observability: Centralized logs, AWS CloudWatch dashboards & alerts',
+    'Dockerized deployment + S3 storage for large-scale datasets',
+    'Modern React UI with smart filters, interactive maps, analytics dashboards',
+    'Resilient pipeline with retry strategies, background workers & Redis queues',
+    'End-to-end data lifecycle: ingestion → cleaning → enrichment → indexing'
+  ],
+
+  images: [
+    '/images/datapull-1.jpg',
+    '/images/datapull-2.jpg',
+    '/images/datapull-dashboard.jpg',
+    '/images/datapull-etl.jpg'
+  ],
+
+  githubUrl: 'https://github.com/ALOUAN01/datapull',
+  liveUrl: 'https://datapull.demo.com',
+
+  category: 'Full-Stack / Data Engineering / Cloud',
+  featured: true,
+  date: '2025-08'
+}
+,
   {
-    id: 2,
-    name: 'Leave Management System',
-    description: 'Enterprise leave management for Court of Appeal',
-    longDescription: 'Complete leave management system for the Court of Appeal of Marrakech, managing over 200 employees with automated workflows, approval processes, and real-time notifications.',
-    tech: ['Spring Boot', 'Angular', 'PostgreSQL', 'JWT'],
-    highlights: [
-      'Automated workflows for 200+ employees',
-      '60% reduction in processing time',
-      'Eliminated manual errors',
-      'Role-based access control'
-    ],
-     images: [
-      '/projects/leave-management-1.jpg',
-      '/projects/leave-management-2.jpg'
-    ],
-    githubUrl: 'https://github.com/ALOUAN01/leave-management',
-    liveUrl: null,
-    category: 'Full-Stack',
-    featured: true,
-    date: '2024-09'
-  },
+  id: 2,
+  name: 'Leave Management System',
+  description:
+    'Enterprise-grade leave management platform with automated workflows and multi-level approval',
+
+  longDescription:
+    "The Leave Management System is a full-stack enterprise application developed for the Court of Appeal of Marrakech to digitalize and automate the entire leave-management process for more than 200 employees. The platform provides end-to-end request handling, multi-level approval workflows, secure authentication, real-time notifications, advanced role management, and analytics dashboards to streamline HR operations and eliminate manual processing.",
+
+  tech: [
+    'Spring Boot (REST APIs)',
+    'Angular (Reactive UI)',
+    'PostgreSQL',
+    'JWT Authentication',
+    'Spring Security',
+    'Bootstrap / Tailwind'
+  ],
+
+  highlights: [
+    'Automated approval workflows with multi-role validation (employee → responsible → manager)',
+    'Used daily by 200+ employees at the Court of Appeal of Marrakech',
+    '60% reduction in leave processing time after deployment',
+    'Full elimination of manual errors and paper-based processes',
+    'Role-Based Access Control (RBAC) with granular permissions',
+    'Real-time email/SMS notifications for approvals and updates',
+    'Dynamic reporting: leave balance, annual statistics, pending validations',
+    'Calendar visualization of all employee leaves (per user and per department)',
+    'Secure JWT-based authentication with session timeout & refresh strategy'
+  ],
+
+  images: [
+    '/images/leaveManage.jpg',
+    '/images/leaveManage1.jpg',
+    '/images/leaveManage2.jpg',
+    '/images/leaveManage3.jpg'
+  ],
+
+  githubUrl: 'https://github.com/ALOUAN01/leave-management',
+  liveUrl: null,
+
+  category: 'Full-Stack / Enterprise Application',
+  featured: true,
+  date: '2024-09'
+}
+,
   {
-    id: 3,
-    name: 'School Management System',
-    description: 'Complete school administration platform',
-    longDescription: 'Comprehensive school management application built for EKBlocks, handling student enrollment, class management, teacher assignment, and academic tracking.',
-    tech: ['Django', 'React', 'PostgreSQL', 'REST API'],
-    highlights: [
-      'Student enrollment system',
-      'Class and teacher management',
-      'Real-time statistics dashboard',
-      'Parent portal integration'
-    ],
-     images: [
-      '/projects/school-management-1.jpg',
-      '/projects/school-management-2.jpg',
-      '/projects/school-management-3.jpg',
-      '/projects/school-management-4.jpg'
-    ],
-    githubUrl: 'https://github.com/ALOUAN01/school-management',
-    liveUrl: null,
-    category: 'Full-Stack',
-    featured: false,
-    date: '2023-09'
-  },
+  id: 3,
+  name: 'School Management System',
+  description:
+    'Full-stack school administration platform for student, teacher, class and academic data management',
+
+  longDescription:
+    "The School Management System is a complete full-stack web application developed for EKBlocks to digitalize and optimize the daily administrative operations of educational institutions. It centralizes student information, teacher records, class structures, modules, grades and attendance, while offering a modern and intuitive interface built with React. The backend, powered by Django and Django REST Framework, ensures clean data modeling, secure APIs and scalable academic management workflows.",
+
+  tech: [
+    'Django',
+    'Django REST Framework',
+    'React',
+    'PostgreSQL / SQLite',
+    'REST API',
+    'Bootstrap / Custom CSS'
+  ],
+
+  highlights: [
+    'End-to-end student lifecycle: registration, editing, academic tracking',
+    'Teacher management with role assignment and module allocation',
+    'Classroom management: enrollment, module assignment, dynamic updates',
+    'Real-time statistics dashboard for academic and administrative insights',
+    'Grade and attendance tracking for all modules and levels',
+    'Clean REST API architecture using Django REST Framework',
+    'SPA interface with reusable React components and optimized UI/UX',
+    'Secure CRUD operations with fully modeled entities (Students, Teachers, Modules, Grades, Absences)',
+    'Modular design allowing future extensions (parent portal, messaging, scheduling)'
+  ],
+
+  images: [
+    '/images/ManageSchool.jpg',
+    '/images/ManageSchool1.jpg',
+    '/images/ManageSchool2.jpg',
+    '/images/ManageSchool3.jpg',
+    '/images/ManageSchool4.jpg'
+  ],
+
+  githubUrl: 'https://github.com/ALOUAN01/school-management',
+  liveUrl: null,
+
+  category: 'Full-Stack / Academic Systems',
+  featured: false,
+  date: '2023-09'
+}
+,
   {
     id: 4,
     name: 'E-Commerce Platform',
