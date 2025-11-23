@@ -230,11 +230,35 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-slate-800/30">
+       <section id="projects" className="py-20 px-6 bg-slate-800/30">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">
-            Featured Projects
-          </h2>
+          {/* Header avec titre et bouton */}
+          <div className="flex flex-col items-center mb-12">
+            <h2 className="text-4xl font-bold text-center mb-6">
+              Featured Projects
+            </h2>
+            <button
+              onClick={() => navigate('/projects')}
+              className="group relative flex items-center gap-3 px-8 py-3.5 
+                         bg-gradient-to-r from-slate-700 to-slate-600
+                         hover:from-cyan-500 hover:to-blue-500
+                         border-2 border-slate-600 hover:border-transparent
+                         rounded-xl text-white font-semibold text-base
+                         transition-all duration-300 
+                         hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30
+                         overflow-hidden"
+            >
+              {/* Effet de brillance au survol */}
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></span>
+              
+              <span className="relative z-10">View All Projects</span>
+              <span className="relative z-10 transform transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
+          </div>
+
+          {/* Grille des projets */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, idx) => (
               <div
@@ -281,6 +305,8 @@ export default function Portfolio() {
               </div>
             ))}
           </div>
+
+       
         </div>
       </section>
 

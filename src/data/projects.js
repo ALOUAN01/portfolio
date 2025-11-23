@@ -140,24 +140,46 @@ export const projects = [
 }
 ,
   {
-    id: 4,
-    name: 'E-Commerce Platform',
-    description: 'Modern e-commerce solution with payment integration',
-    longDescription: 'Full-featured e-commerce platform with product management, shopping cart, secure payment processing, and order tracking.',
-    tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
-    highlights: [
-      'Secure payment integration',
-      'Real-time inventory management',
-      'Admin dashboard',
-      'Mobile responsive design'
-    ],
-    image: '/projects/ecommerce.jpg',
-    githubUrl: 'https://github.com/ALOUAN01/ecommerce',
-    liveUrl: 'https://ecommerce-demo.com',
-    category: 'Full-Stack',
-    featured: false,
-    date: '2024-03'
-  }
+  id: 4,
+  name: 'AI Design Pattern Detector (DPD)',
+  description:
+    'AI-powered tool for automated code analysis and intelligent design pattern recommendations',
+
+  longDescription:
+    "DPD (Design Pattern Detector) is an AI-driven multi-service platform designed to analyze source code and recommend appropriate software design patterns based on structural and functional characteristics. The system combines intelligent backend analysis, secure authentication, and an interactive Angular frontend to help developers make informed architectural decisions and improve code quality.",
+
+  tech: [
+    'Django (Python)',
+    'Spring Boot (Java)',
+    'JavaParser',
+    'Angular',
+    'MySQL',
+    'JWT Authentication',
+    'Docker & Docker Compose'
+  ],
+
+  highlights: [
+    'AI-assisted code analysis across Python and Java backend services',
+    'Automated design pattern recommendation (Singleton, Factory, Observer, etc.)',
+    'Multi-service architecture: Django for AI/analysis, Spring Boot for parsing and authentication',
+    'Secure JWT-based authentication with role-based access control',
+    'Interactive Angular interface for uploading, analyzing and visualizing results',
+    'REST APIs enabling cross-service communication and modularity',
+    'Dockerized environment with full multi-container orchestration',
+    'Extensible architecture ready for more design patterns and AI integration'
+  ],
+
+  video: [
+    '/videos/DPD-1.mp4'
+  ],
+
+  githubUrl: 'https://github.com/ALOUAN01/DPD', // met ton vrai dépôt ici si tu veux
+  liveUrl: null,
+
+  category: 'AI / Full-Stack / Software Engineering Tools',
+  featured: true,
+  date: '2025-01'
+}
 ];
 
 // Fonction pour obtenir tous les projets

@@ -127,66 +127,75 @@ export default function ProjectDetails() {
         </div>
 
         {/* Carousel d'images */}
-        {project.images && project.images.length > 0 && (
-          <div className="mb-8">
-            {/* Image principale */}
-            <div className=" relative rounded-2xl overflow-hidden  group flex justify-center">
-              <img
-                src={project.images[currentImageIndex]}
-                alt={`${project.name} - Image ${currentImageIndex + 1}`}
-                className="max-w-3xl w-full md:w-3/4 lg:w-2/3 h-auto object-cover transition-transform duration-300 rounded-xl"
-              />
+        {/* Media Section (image carousel OR video) */}
+        {project.video ? (
+          /* ==== VIDEO ==== */
+          <div className="mb-10 flex justify-center">
+            <video
+              controls
+              className="rounded-2xl w-full md:w-3/4 lg:w-2/3 shadow-xl border border-slate-700"
+            >
+              <source src={project.video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ) : (
+          /* ==== IMAGE CAROUSEL ==== */
+          project.images &&
+          project.images.length > 0 && (
+            <div className="mb-8">
+              <div className="relative rounded-2xl overflow-hidden group flex justify-center">
+                <img
+                  src={project.images[currentImageIndex]}
+                  alt={`${project.name} - Image ${currentImageIndex + 1}`}
+                  className="max-w-3xl w-full md:w-3/4 lg:w-2/3 h-auto object-cover transition-transform duration-300 rounded-xl"
+                />
 
-              {/* Boutons de navigation */}
+                {project.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-slate-800 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-slate-800 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+
+                    <div className="absolute top-4 right-4 bg-slate-900/80 px-3 py-1 rounded-full text-sm">
+                      {currentImageIndex + 1} / {project.images.length}
+                    </div>
+                  </>
+                )}
+              </div>
+
               {project.images.length > 1 && (
-                <>
-                  <button
-                    onClick={prevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-slate-800 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all"
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft size={24} />
-                  </button>
-
-                  <button
-                    onClick={nextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-slate-800 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all"
-                    aria-label="Next image"
-                  >
-                    <ChevronRight size={24} />
-                  </button>
-
-                  {/* Compteur d'images */}
-                  <div className="absolute top-4 right-4 bg-slate-900/80 px-3 py-1 rounded-full text-sm">
-                    {currentImageIndex + 1} / {project.images.length}
-                  </div>
-                </>
+                <div className="flex gap-3 overflow-x-auto pb-2">
+                  {project.images.map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToImage(index)}
+                      className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all mt-4 ml-1 ${
+                        currentImageIndex === index
+                          ? "border-cyan-400 scale-105"
+                          : "border-slate-700 hover:border-slate-500 opacity-60 hover:opacity-100"
+                      }`}
+                    >
+                      <img
+                        src={image}
+                        alt={`Thumbnail ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
               )}
             </div>
-
-            {/* Thumbnails */}
-            {project.images.length > 1 && (
-              <div className=" flex gap-3 overflow-x-auto pb-2">
-                {project.images.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToImage(index)}
-                    className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all mt-4 ml-1 ${
-                      currentImageIndex === index
-                        ? "border-cyan-400 scale-105"
-                        : "border-slate-700 hover:border-slate-500 opacity-60 hover:opacity-100"
-                    }`}
-                  >
-                    <img
-                      src={image}
-                      alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          )
         )}
 
         {/* Grille de contenu */}
