@@ -60,19 +60,13 @@ export default function ProjectDetails() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
       <Navbar></Navbar>
       {/* Header avec navigation */}
-
-      <div className="max-w-6xl mx-auto px-6 py-4"></div>
-      <div className="max-w-6xl mx-auto px-6 py-4"></div>
       <div className="max-w-6xl mx-auto my-auto px-6 py-4">
         <button
           onClick={() => navigate(-1)}
-          className="text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-2 group"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors mb-4 sm:mb-6 inline-flex items-center gap-2 text-sm sm:text-base mt-12"
         >
-          <ArrowLeft
-            size={20}
-            className="group-hover:-translate-x-1 transition-transform"
-          />
-          Back
+          
+           ← Back
         </button>
       </div>
 
