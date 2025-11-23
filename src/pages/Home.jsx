@@ -294,8 +294,8 @@ export default function Portfolio() {
                 <button
                   onClick={() => navigate(`/project/${project.id}`)}
                   className="group absolute right-4 bottom-0 flex items-center gap-2 px-4 py-2 
-                            text-cyan-300 rounded-lg text-sm font-medium 
-                            transition-all duration-300 backdrop-blur-sm"
+                            text-cyan-300 -sm font-medium 
+                            transition-all duration-300 "
                 >
                   see more
                   <span className="transform transition-transform duration-300 group-hover:translate-x-1">
