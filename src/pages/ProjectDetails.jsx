@@ -130,18 +130,6 @@ export default function ProjectDetails() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
       <Navbar />
 
-      {/* Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-slate-800 z-50">
-        <div
-          className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300"
-          style={{
-            width: `${(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%`,
-          }}
-        />
-      </div>
-
-      
-
       {/* Header avec navigation */}
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between mt-12">
@@ -334,7 +322,7 @@ export default function ProjectDetails() {
         </div>
          {project.media && project.media.length > 0 && (
         <div className="max-w-5xl  mx-auto px-6 mb-12 mt-16">
-          <div className="relative rounded-2xl overflow-hidden group bg-slate-800/50 border border-slate-700">
+          <div className="relative rounded-2xl overflow-hidden group ">
             {/* Main Media */}
             <div 
               className="relative flex justify-center items-center min-h-[400px] cursor-zoom-in"
@@ -344,12 +332,12 @@ export default function ProjectDetails() {
                 <img
                   src={project.media[currentImageIndex].src}
                   alt={`Slide ${currentImageIndex + 1}`}
-                  className="max-h-[650px] w-auto object-contain rounded-xl transition-transform duration-300 hover:scale-105"
+                  className="max-h-[650px] w-auto object-contain rounded-xl transition-transform duration-300 "
                 />
               ) : (
                 <video
                   controls
-                  className="max-w-3xl w-full md:w-3/4 lg:w-2/3 rounded-xl"
+                  className="max-h-[650px] w-auto object-contain rounded-xl transition-transform duration-300 "
                 >
                   <source src={project.media[currentImageIndex].src} type="video/mp4" />
                 </video>
@@ -382,13 +370,13 @@ export default function ProjectDetails() {
 
             {/* Thumbnails with smooth scroll */}
             {project.media.length > 1 && (
-              <div className="p-4 bg-slate-900/50">
+              <div className="p-2">
                 <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
                   {project.media.map((item, index) => (
                     <button
                       key={index}
                       onClick={() => goToImage(index)}
-                      className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all ${
+                      className={`mt-2 ml-1 flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all ${
                         currentImageIndex === index
                           ? "border-cyan-400 scale-105 shadow-lg shadow-cyan-500/30"
                           : "border-slate-700 hover:border-slate-500 opacity-60 hover:opacity-100"
