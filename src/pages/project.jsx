@@ -434,7 +434,6 @@ export default function AllProjects() {
       {/* Footer */}
       <footer className="border-t border-slate-700 mt-12 sm:mt-20 bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 text-center text-gray-400 text-sm sm:text-base">
-          <p className="mb-2">Built with ❤️ using React & Tailwind CSS</p>
           <p>&copy; 2025 Ayoub Alouan. All rights reserved.</p>
         </div>
       </footer>
