@@ -141,7 +141,7 @@ export default function AllProjects() {
       <div className="sticky top-16 sm:top-20 z-20 border-b border-slate-700 bg-slate-900/95 backdrop-blur-lg shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           {/* Search Bar - Full width on mobile */}
-          <div className="relative mb-3">
+          <div className="relative w-full mb-3">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={18} />
             <input
               type="text"
