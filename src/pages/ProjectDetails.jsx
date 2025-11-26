@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProjectById } from "../data/projects";
 import {
@@ -16,6 +16,8 @@ import {
   Eye,
   Code2,
   Lightbulb,
+  ZoomIn,
+  X,
 } from "lucide-react";
 import Navbar from "./navbar";
 
@@ -66,46 +68,15 @@ export default function ProjectDetails() {
     }
   };
 
-  if (!project) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center text-white p-10">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <p className="text-gray-400 mb-6">
-            The project you're looking for doesn't exist.
-          </p>
-          <button
-            onClick={() => navigate("/")}
-            className="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-lg transition-colors inline-flex items-center gap-2"
-          >
-            <ArrowLeft size={20} />
-            Back to Home
-          </button>
-        </div>
-      </div>
-    );
-  }
 
-  // Navigation entre les images
-  const nextImage = () => {
-    if (project.media && project.media.length > 0) {
-      setCurrentImageIndex((prev) =>
-        prev === project.media.length - 1 ? 0 : prev + 1
-      );
-    }
-  };
 
-  const prevImage = () => {
-    if (project.media && project.media.length > 0) {
-      setCurrentImageIndex((prev) =>
-        prev === 0 ? project.media.length - 1 : prev - 1
-      );
-    }
-  };
 
-  const goToImage = (index) => {
-    setCurrentImageIndex(index);
-  };
+
+
+  
+
+
+
 
   // Share functionality
   const handleShare = async () => {
@@ -125,6 +96,63 @@ export default function ProjectDetails() {
       alert("Link copied to clipboard!");
     }
   };
+
+
+
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const media = project?.media || [];
+  const hasMultiple = media.length > 1;
+
+  // Navigation carousel
+  const nextImage = useCallback(() => {
+    setCurrentImageIndex((i) => (i + 1) % media.length);
+  }, [media.length]);
+
+  const prevImage = useCallback(() => {
+    setCurrentImageIndex((i) => (i - 1 + media.length) % media.length);
+  }, [media.length]);
+
+  const goToSlide = (index) => setCurrentImageIndex(index);
+
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = () => setShowScrollTop(window.scrollY > 500);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Clavier pour fullscreen
+  useEffect(() => {
+    if (!isFullscreen) return;
+    const handleKey = (e) => {
+      if (e.key === "Escape") setIsFullscreen(false);
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [isFullscreen, nextImage, prevImage]);
+
+
+
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center text-white">
+        <div className="text-center">
+          <h1 className="text-5xl font-bold mb-6">Projet non trouvé</h1>
+          <button
+            onClick={() => navigate("/")}
+            className="px-8 py-4 bg-cyan-500 hover:bg-cyan-600 rounded-xl transition flex items-center gap-3 mx-auto"
+          >
+            <ArrowLeft size={22} /> Retour à l'accueil
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const currentMedia = media[currentImageIndex];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
@@ -320,74 +348,96 @@ export default function ProjectDetails() {
             </div>
           </div>
         </div>
-         {project.media && project.media.length > 0 && (
-        <div className="max-w-5xl  mx-auto px-6 mb-12 mt-16">
-          <div className="relative rounded-2xl overflow-hidden group ">
-            {/* Main Media */}
-            <div 
-              className="relative flex justify-center items-center min-h-[400px] cursor-zoom-in"
-              onClick={() => setIsImageFullscreen(true)}
-            >
-              {project.media[currentImageIndex].type === "image" ? (
-                <img
-                  src={project.media[currentImageIndex].src}
-                  alt={`Slide ${currentImageIndex + 1}`}
-                  className="max-h-[650px] w-auto object-contain rounded-xl transition-transform duration-300 "
-                />
-              ) : (
-                <video
-                  controls
-                  className="max-h-[650px] w-auto object-contain rounded-xl transition-transform duration-300 "
-                >
-                  <source src={project.media[currentImageIndex].src} type="video/mp4" />
-                </video>
-              )}
+              {/* CAROUSEL – Parfaitement fonctionnel */}
+      {media.length > 0 && (
+        <section className="max-w-7xl mx-auto px-6 my-24">
+          <div className=" backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-700 shadow-2xl">
+            {/* Image principale */}
+            <div className="relative bg-black/40">
+              <div
+                className="cursor-zoom-in flex justify-center items-center min-h-96 md:min-h-screen"
+                onClick={() => setIsFullscreen(true)}
+              >
+                {currentMedia.type === "image" ? (
+                  <img
+                    src={currentMedia.src}
+                    alt={`${project.name} - ${currentImageIndex + 1}`}
+                    className="max-w-full max-h-screen object-contain"
+                    loading="lazy"
+                  />
+                ) : (
+                  <video controls className="max-w-full max-h-screen object-contain">
+                    <source src={currentMedia.src} type="video/mp4" />
+                    Votre navigateur ne supporte pas la vidéo.
+                  </video>
+                )}
 
-              {/* Navigation Arrows */}
-              {project.media.length > 1 && (
-                <>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/90 hover:bg-slate-800 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:scale-110"
-                  >
-                    <ChevronLeft size={24} />
-                  </button>
+                {/* Indicateur zoom */}
+                <div className="absolute bottom-5 right-5 bg-black/70 backdrop-blur px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium">
+                  <ZoomIn size={16} />
+                  Cliquez pour agrandir
+                </div>
 
-                  <button
-                    onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/90 hover:bg-slate-800 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:scale-110"
-                  >
-                    <ChevronRight size={24} />
-                  </button>
-
-                  {/* Counter */}
-                  <div className="absolute top-4 right-4 bg-slate-900/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
-                    {currentImageIndex + 1} / {project.media.length}
+                {/* Compteur */}
+                {hasMultiple && (
+                  <div className="absolute top-5 right-5 bg-black/70 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
+                    {currentImageIndex + 1} / {media.length}
                   </div>
-                </>
-              )}
+                )}
+
+                {/* Flèches */}
+                {hasMultiple && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        prevImage();
+                      }}
+                      className="absolute left-5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-4 rounded-full backdrop-blur transition hover:scale-110"
+                      aria-label="Précédent"
+                    >
+                      <ChevronLeft size={16} />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        nextImage();
+                      }}
+                      className="absolute right-5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-4 rounded-full backdrop-blur transition hover:scale-110"
+                      aria-label="Suivant"
+                    >
+                      <ChevronRight size={16} />
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
 
-            {/* Thumbnails with smooth scroll */}
-            {project.media.length > 1 && (
-              <div className="p-2">
-                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
-                  {project.media.map((item, index) => (
+            {/* Miniatures */}
+            {hasMultiple && (
+              <div className="p-2 bg-slate-900/70">
+                <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-slate-600 pb-2">
+                  {media.map((item, i) => (
                     <button
-                      key={index}
-                      onClick={() => goToImage(index)}
-                      className={`mt-2 ml-1 flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all ${
-                        currentImageIndex === index
-                          ? "border-cyan-400 scale-105 shadow-lg shadow-cyan-500/30"
-                          : "border-slate-700 hover:border-slate-500 opacity-60 hover:opacity-100"
+                      key={i}
+                      onClick={() => goToSlide(i)}
+                      className={`flex-shrink-0 w-28 h-20 rounded-xl overflow-hidden border-3 transition-all mt-2 ml-2 ${
+                        i === currentImageIndex
+                          ? "border-cyan-400 shadow-lg scale-110"
+                          : "border-slate-700 hover:border-slate-500"
                       }`}
                     >
                       {item.type === "image" ? (
-                        <img src={item.src} alt="thumb" className="w-full h-full object-cover" />
+                        <img
+                          src={item.src}
+                          alt={`Miniature ${i + 1}`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
                       ) : (
-                        <video className="w-full h-full object-cover" muted>
-                          <source src={item.src} type="video/mp4" />
-                        </video>
+                        <div className="w-full h-full bg-gradient-to-br from-cyan-600 to-blue-600 flex items-center justify-center">
+                          <span className="text-xs font-bold text-white">VIDÉO</span>
+                        </div>
                       )}
                     </button>
                   ))}
@@ -395,9 +445,54 @@ export default function ProjectDetails() {
               </div>
             )}
           </div>
-        </div>
+        </section>
       )}
 
+      {/* Fullscreen */}
+      {isFullscreen && currentMedia && (
+        <div
+          className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center"
+          onClick={() => setIsFullscreen(false)}
+        >
+          <button
+            className="absolute top-8 right-8 text-white/80 hover:text-white z-10 p-4 bg-white/10 rounded-full backdrop-blur"
+            onClick={() => setIsFullscreen(false)}
+          >
+            <X size={16} />
+          </button>
+
+          {currentMedia.type === "image" ? (
+            <img src={currentMedia.src} alt={project.name} className="max-w-full max-h-full object-contain" />
+          ) : (
+            <video controls autoPlay className="max-w-full max-h-full">
+              <source src={currentMedia.src} type="video/mp4" />
+            </video>
+          )}
+
+          {hasMultiple && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevImage();
+                }}
+                className="absolute left-8 top-1/2 -translate-y-1/2  p-6 bg-black/60 hover:bg-black/80 text-white rounded-full hover:bg-white/30"
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextImage();
+                }}
+                className="absolute right-8 top-1/2 -translate-y-1/2  p-6 bg-black/60 hover:bg-black/80 text-white rounded-full hover:bg-white/30"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </>
+          )}
+        </div>
+      )}
         {/* CTA Section */}
         <div className="mt-16 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl p-8 border border-cyan-500/20 text-center relative overflow-hidden">
           {/* Background pattern */}
