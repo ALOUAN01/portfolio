@@ -293,7 +293,7 @@ export const getProjectById = (id) => {
 };
 
 export const getProjectImpo = () => {
-  const importantIds = [1, 2, 3];
+  const importantIds = [1, 2, 4];
   return projects.filter((project) => importantIds.includes(project.id));
 };
 

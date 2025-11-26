@@ -69,43 +69,36 @@ export default function AllProjects() {
 
   const stats = {
     total: mockProjects.length,
-    featured: mockProjects.filter(p => p.featured).length,
+    featured: mockProjects.filter((p) => p.featured).length,
     categories: categories.length - 1,
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
       <Navbar />
-
-      {/* IMPORTANT: Padding top pour compenser la navbar fixe */}
-      <div className="pt-20"></div>
-
       {/* Hero Section */}
-      <div className="relative border-b border-slate-700 overflow-hidden">
+      <div className="relative border-b border-slate-700 overflow-hidden ">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, cyan 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, cyan 1px, transparent 0)`,
+              backgroundSize: "40px 40px",
+            }}
+          ></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-          <button
-            onClick={() => navigate("/")}
-            className="text-cyan-400 hover:text-cyan-300 transition-colors mb-6 sm:mb-8 inline-flex items-center gap-2 group text-sm sm:text-base"
-          >
-            <span className="transform group-hover:-translate-x-1 transition-transform">←</span>
-            Back to Home
-          </button>
-
-          <div className="mb-6 sm:mb-8">
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <div className="relative max-w-7xl mx-auto px-2 sm:px-2 py-2 sm:py-4 mt-16">
+          <div className="mb-4 sm:mb-4">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 sm:mb-2 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
               All Projects
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl leading-relaxed">
               Explore my complete portfolio of{" "}
-              <span className="text-cyan-400 font-semibold">{stats.total} projects</span>{" "}
+              <span className="text-cyan-400 font-semibold">
+                {stats.total} projects
+              </span>{" "}
               spanning across {stats.categories} categories
             </p>
           </div>
@@ -115,34 +108,47 @@ export default function AllProjects() {
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-slate-700">
               <div className="flex items-center gap-2 text-cyan-400 mb-1">
                 <Code size={16} className="sm:w-5 sm:h-5" />
-                <span className="text-xl sm:text-2xl font-bold">{stats.total}</span>
+                <span className="text-xl sm:text-2xl font-bold">
+                  {stats.total}
+                </span>
+                <p className="text-xs sm:text-sm text-gray-400">
+                  Total Projects
+                </p>
               </div>
-              <p className="text-xs sm:text-sm text-gray-400">Total Projects</p>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-slate-700">
               <div className="flex items-center gap-2 text-yellow-400 mb-1">
                 <Star size={16} className="sm:w-5 sm:h-5" />
-                <span className="text-xl sm:text-2xl font-bold">{stats.featured}</span>
+                <span className="text-xl sm:text-2xl font-bold">
+                  {stats.featured}
+                </span>
+                <p className="text-xs sm:text-sm text-gray-400">Featured</p>
               </div>
-              <p className="text-xs sm:text-sm text-gray-400">Featured</p>
+              
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-slate-700">
               <div className="flex items-center gap-2 text-purple-400 mb-1">
                 <TrendingUp size={16} className="sm:w-5 sm:h-5" />
-                <span className="text-xl sm:text-2xl font-bold">{stats.categories}</span>
+                <span className="text-xl sm:text-2xl font-bold">
+                  {stats.categories}
+                </span>
+                <p className="text-xs sm:text-sm text-gray-400">Categories</p>
               </div>
-              <p className="text-xs sm:text-sm text-gray-400">Categories</p>
+              
             </div>
           </div>
         </div>
       </div>
 
       {/* Filters Section - Sticky - Mobile Optimized */}
-      <div className="sticky top-16 sm:top-20 z-200 border-b border-slate-700 bg-slate-900/95 backdrop-blur-lg shadow-lg">
+      <div className=" top-16 sm:top-20 z-20 border-b border-slate-700 bg-slate-900/95 backdrop-blur-lg shadow-lg">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 py-2 sm:py-4">
           {/* Search Bar - Full width on mobile */}
           <div className="relative mb-3">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={18} />
+            <Search
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+              size={18}
+            />
             <input
               type="text"
               placeholder="Search projects..."
@@ -208,8 +214,13 @@ export default function AllProjects() {
           {/* Results Count */}
           <div className="mt-3 flex items-center justify-between text-xs sm:text-sm">
             <span className="text-gray-400">
-              <span className="text-cyan-400 font-semibold">{filteredProjects.length}</span> of{" "}
-              <span className="text-cyan-400 font-semibold">{mockProjects.length}</span>
+              <span className="text-cyan-400 font-semibold">
+                {filteredProjects.length}
+              </span>{" "}
+              of{" "}
+              <span className="text-cyan-400 font-semibold">
+                {mockProjects.length}
+              </span>
             </span>
             {searchTerm && (
               <button
@@ -228,7 +239,9 @@ export default function AllProjects() {
         {filteredProjects.length === 0 ? (
           <div className="text-center py-12 sm:py-20">
             <div className="text-4xl sm:text-6xl mb-4">🔍</div>
-            <h3 className="text-xl sm:text-2xl font-bold mb-2">No projects found</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">
+              No projects found
+            </h3>
             <p className="text-gray-400 mb-6 text-sm sm:text-base">
               Try adjusting your search or filter criteria
             </p>
@@ -251,7 +264,7 @@ export default function AllProjects() {
                 className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all hover:transform hover:scale-105 cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-cyan-500/20"
                 onClick={() => navigate(`/project/${project.id}`)}
                 style={{
-                  animation: `fadeInUp 0.5s ease-out ${idx * 0.1}s both`
+                  animation: `fadeInUp 0.5s ease-out ${idx * 0.1}s both`,
                 }}
               >
                 {/* Content */}
@@ -271,7 +284,7 @@ export default function AllProjects() {
                   <h3 className="text-lg sm:text-xl font-semibold mb-2 text-cyan-400 group-hover:text-cyan-300 transition-colors line-clamp-1">
                     {project.name}
                   </h3>
-                  
+
                   <p className="text-gray-300 text-sm mb-4 line-clamp-2 leading-relaxed">
                     {project.description}
                   </p>
@@ -301,7 +314,9 @@ export default function AllProjects() {
                     </div>
                     <span className="text-cyan-400 text-sm flex items-center gap-1 group-hover:gap-2 transition-all font-medium">
                       View Details
-                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                      <span className="group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
                     </span>
                   </div>
                 </div>
@@ -317,7 +332,7 @@ export default function AllProjects() {
                 className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-cyan-400/50 transition-all cursor-pointer overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-cyan-500/20"
                 onClick={() => navigate(`/project/${project.id}`)}
                 style={{
-                  animation: `fadeInUp 0.5s ease-out ${idx * 0.1}s both`
+                  animation: `fadeInUp 0.5s ease-out ${idx * 0.1}s both`,
                 }}
               >
                 <div className="flex flex-col p-4 sm:p-6 md:p-8">
@@ -349,7 +364,10 @@ export default function AllProjects() {
                     {/* Highlights */}
                     <ul className="space-y-2 mb-4 sm:mb-6">
                       {project.highlights.slice(0, 3).map((highlight, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-gray-400">
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 text-sm text-gray-400"
+                        >
                           <span className="text-cyan-400 mt-1">✓</span>
                           <span>{highlight}</span>
                         </li>
@@ -406,7 +424,10 @@ export default function AllProjects() {
           className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 p-3 sm:p-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 z-50 group"
           aria-label="Scroll to top"
         >
-          <ArrowUp size={20} className="sm:w-6 sm:h-6 group-hover:-translate-y-1 transition-transform" />
+          <ArrowUp
+            size={20}
+            className="sm:w-6 sm:h-6 group-hover:-translate-y-1 transition-transform"
+          />
         </button>
       )}
 
