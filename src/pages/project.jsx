@@ -107,7 +107,7 @@ export default function AllProjects() {
           <div className="grid grid-cols-3 gap-3 sm:gap-4 max-w-2xl">
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-slate-700">
               <div className="flex items-center gap-2 text-cyan-400 mb-1">
-                <Code size={16} className="sm:w-5 sm:h-5" />
+                <Code size={26} className="sm:w-5 sm:h-5" />
                 <span className="text-xl sm:text-2xl font-bold">
                   {stats.total}
                 </span>
@@ -118,7 +118,7 @@ export default function AllProjects() {
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-slate-700">
               <div className="flex items-center gap-2 text-yellow-400 mb-1">
-                <Star size={16} className="sm:w-5 sm:h-5" />
+                <Star size={26} className="sm:w-5 sm:h-5" />
                 <span className="text-xl sm:text-2xl font-bold">
                   {stats.featured}
                 </span>
@@ -128,7 +128,7 @@ export default function AllProjects() {
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-slate-700">
               <div className="flex items-center gap-2 text-purple-400 mb-1">
-                <TrendingUp size={16} className="sm:w-5 sm:h-5" />
+                <TrendingUp size={26} className="sm:w-5 sm:h-5" />
                 <span className="text-xl sm:text-2xl font-bold">
                   {stats.categories}
                 </span>
