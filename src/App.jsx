@@ -7,13 +7,14 @@ import ProjectDetails from "./pages/ProjectDetails";
 import SkillDetails from "./pages/SkillDetails";
 import CertifDetails from "./pages/CertifDetails";
 import AllProjects from "./pages/project";
+import { Analytics } from '@vercel/analytics/react';
 
 import './App.css'
 
 function App() {
   return (
     <BrowserRouter>
-      
+      <Analytics />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<AllProjects />} />
