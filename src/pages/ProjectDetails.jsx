@@ -161,22 +161,10 @@ export default function ProjectDetails() {
       {/* Header avec navigation */}
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between mt-12">
-          <button
-            onClick={() => navigate(-1)}
-            className="group text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-2 text-sm sm:text-base"
-          >
-            <span className="transform group-hover:-translate-x-1 transition-transform">←</span>
-            Back
-          </button>
+          
           
           {/* Share Button */}
-          <button
-            onClick={handleShare}
-            className="p-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg transition-all"
-            title="Share project"
-          >
-            <Share2 size={18} />
-          </button>
+         
         </div>
       </div>
 
@@ -197,6 +185,13 @@ export default function ProjectDetails() {
               {project.date}
             </span>
           )}
+          <button
+  onClick={handleShare}
+  className="ml-auto p-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-full transition-all"
+  title="Share project"
+>
+  <Share2 size={18} />
+</button>
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent leading-tight">

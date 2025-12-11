@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Mail, Phone, Menu, X, Github, Linkedin, ExternalLink } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Menu,
+  X,
+  Github,
+  Linkedin,
+  ExternalLink,
+} from "lucide-react";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
@@ -91,8 +99,8 @@ export default function Navbar() {
       {/* Navigation Desktop */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled 
-            ? "bg-slate-900/80 backdrop-blur-2xl shadow-2xl  border-slate-700/50" 
+          isScrolled
+            ? "bg-slate-900/80 backdrop-blur-2xl shadow-2xl  border-slate-700/50"
             : "bg-transparent"
         }`}
       >
@@ -110,7 +118,7 @@ export default function Navbar() {
             >
               {/* Glow effect */}
               <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-              
+
               <span className="relative bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
                 Ayoub Alouan
               </span>
@@ -120,9 +128,15 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-2 bg-slate-800/80 backdrop-blur-2xl rounded-2xl px-2 py-2 border border-slate-700/50 shadow-2xl">
               {navItems.map((item) => {
                 const isActive =
-                  location.pathname === "/" &&
-                  activeSection === item.toLowerCase();
+                  (location.pathname === "/" &&
+                    activeSection === item.toLowerCase()) ||
+                  (location.pathname.startsWith("/projects") &&
+                    item.toLowerCase() === "projects") ||
+                  (location.pathname.startsWith("/project/") &&
+                    item.toLowerCase() === "projects");
+
                 return (
+               
                   <button
                     key={item}
                     onClick={() => scrollToSection(item.toLowerCase())}
@@ -133,21 +147,19 @@ export default function Navbar() {
                           : "text-gray-400 hover:text-white"
                       }`}
                   >
-                    {/* Active background with gradient */}
-                    {isActive && (
-                      <>
-                        <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/50"></span>
-                        <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 blur-xl opacity-50 animate-pulse"></span>
-                      </>
-                    )}
-                    
                     {/* Hover effect */}
                     {!isActive && (
                       <span className="absolute inset-0 rounded-xl bg-slate-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                     )}
-                    
+
                     <span className="relative z-10">{item}</span>
+                    
+                    {/* Active underline with animation */}
+                    <span className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 rounded-full shadow-lg shadow-cyan-500/50 transition-all duration-500 ease-out bg-[length:200%_100%] ${
+                      isActive ? 'w-3/4 opacity-100 animate-shimmer' : 'w-0 opacity-0'
+                    }`}></span>
                   </button>
+                  
                 );
               })}
             </div>
@@ -160,9 +172,12 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 className="p-2.5 bg-slate-800/80 hover:bg-slate-700 border border-slate-700/50 rounded-xl transition-all hover:scale-110 hover:border-cyan-400/50"
               >
-                <Github size={20} className="text-gray-300 hover:text-cyan-400 transition-colors" />
+                <Github
+                  size={20}
+                  className="text-gray-300 hover:text-cyan-400 transition-colors"
+                />
               </a>
-              
+
               <button
                 onClick={() => scrollToSection("contact")}
                 className="group relative px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-medium text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
@@ -171,7 +186,10 @@ export default function Navbar() {
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
                 <span className="relative flex items-center gap-2">
                   Let's Talk
-                  <ExternalLink size={16} className="group-hover:rotate-12 transition-transform" />
+                  <ExternalLink
+                    size={16}
+                    className="group-hover:rotate-12 transition-transform"
+                  />
                 </span>
               </button>
             </div>
@@ -183,12 +201,18 @@ export default function Navbar() {
             >
               {/* Glow effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
+
               <div className="relative">
                 {isMobileMenuOpen ? (
-                  <X size={24} className="text-cyan-400 transition-transform duration-300 rotate-90" />
+                  <X
+                    size={24}
+                    className="text-cyan-400 transition-transform duration-300 rotate-90"
+                  />
                 ) : (
-                  <Menu size={24} className="text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
+                  <Menu
+                    size={24}
+                    className="text-cyan-400 group-hover:scale-110 transition-transform duration-300"
+                  />
                 )}
               </div>
             </button>
@@ -218,14 +242,17 @@ export default function Navbar() {
         >
           {/* Decorative gradient border */}
           <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-500"></div>
-          
+
           <div className="p-8 relative">
             {/* Animated background pattern */}
             <div className="absolute inset-0 opacity-5 pointer-events-none">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, cyan 1px, transparent 0)`,
-                backgroundSize: '40px 40px'
-              }}></div>
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage: `radial-gradient(circle at 2px 2px, cyan 1px, transparent 0)`,
+                  backgroundSize: "40px 40px",
+                }}
+              ></div>
             </div>
 
             {/* Header */}
@@ -260,9 +287,11 @@ export default function Navbar() {
                           ? "text-white"
                           : "text-gray-300 hover:text-white"
                       }`}
-                    style={{ 
+                    style={{
                       animationDelay: `${index * 0.1}s`,
-                      animation: isMobileMenuOpen ? 'slideInLeft 0.5s ease-out both' : 'none'
+                      animation: isMobileMenuOpen
+                        ? "slideInLeft 0.5s ease-out both"
+                        : "none",
                     }}
                   >
                     {/* Active state */}
@@ -272,16 +301,20 @@ export default function Navbar() {
                         <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 blur-xl opacity-50"></span>
                       </>
                     )}
-                    
+
                     {/* Hover state */}
                     {!isActive && (
                       <span className="absolute inset-0 bg-slate-800/50 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"></span>
                     )}
-                    
+
                     {/* Content */}
                     <span className="relative z-10 flex items-center justify-between">
                       <span>{item}</span>
-                      <span className={`text-cyan-400 transition-transform duration-300 ${isActive || 'group-hover:translate-x-1'}`}>
+                      <span
+                        className={`text-cyan-400 transition-transform duration-300 ${
+                          isActive || "group-hover:translate-x-1"
+                        }`}
+                      >
                         →
                       </span>
                     </span>
@@ -307,7 +340,7 @@ export default function Navbar() {
                     alouanayoub3@gmail.com
                   </span>
                 </a>
-                
+
                 <a
                   href="tel:+212652634966"
                   className="group flex items-center gap-3 px-4 py-3 bg-slate-800/50 hover:bg-slate-800 rounded-xl transition-all hover:scale-105 border border-slate-700/50 hover:border-cyan-400/50"
@@ -355,7 +388,10 @@ export default function Navbar() {
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-active:translate-x-full transition-transform duration-700"></span>
               <span className="relative flex items-center justify-center gap-2">
                 Start a Project
-                <ExternalLink size={18} className="group-hover:rotate-12 transition-transform" />
+                <ExternalLink
+                  size={18}
+                  className="group-hover:rotate-12 transition-transform"
+                />
               </span>
             </button>
           </div>

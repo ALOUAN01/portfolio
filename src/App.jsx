@@ -8,13 +8,14 @@ import SkillDetails from "./pages/SkillDetails";
 import CertifDetails from "./pages/CertifDetails";
 import AllProjects from "./pages/project";
 import { Analytics } from '@vercel/analytics/react';
-
+import ScrollToTop from './pages/ScrollToTop.jsx';
 import './App.css'
 
 function App() {
   return (
     <BrowserRouter>
       <Analytics />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<AllProjects />} />

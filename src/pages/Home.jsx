@@ -54,9 +54,9 @@ export default function Portfolio() {
 
           {/* RIGHT — TEXT */}
           <div className="text-center md:text-left">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 animate-slide-up">
-              Hi, I'm{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 overflow-hidden">
+              <span className="inline-block animate-slide-up">Hi, I'm </span>
+              <span className="inline-block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent animate-slide-up-delayed animate-gradient-shift">
                 Ayoub Alouan
               </span>
             </h1>
@@ -102,6 +102,21 @@ export default function Portfolio() {
                 <FileText size={24} />
               </a>
             </div>
+            {/* VIEW ALL PROJECTS BUTTON */}
+            <button
+              onClick={() => navigate("/projects")}
+              className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-semibold text-lg overflow-hidden transition-all hover:shadow-2xl hover:shadow-cyan-500/50 hover:scale-105 animate-fade-in-button"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></span>
+              <span className="absolute inset-0 rounded-xl border-2 border-white/20 animate-pulse-border"></span>
+              <span className="relative z-10 flex items-center gap-3">
+                <Code size={20} />
+                View All Projects
+                <span className="transform transition-transform duration-300 group-hover:translate-x-2">
+                  →
+                </span>
+              </span>
+            </button>
 
             {/* SCROLL DOWN 
             <button
@@ -230,7 +245,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-       <section id="projects" className="py-20 px-6 bg-slate-800/30">
+      <section id="projects" className="py-20 px-6 bg-slate-800/30">
         <div className="max-w-6xl mx-auto">
           {/* Header avec titre et bouton */}
           <div className="flex flex-col items-center mb-12">
@@ -238,7 +253,7 @@ export default function Portfolio() {
               Featured Projects
             </h2>
             <button
-              onClick={() => navigate('/projects')}
+              onClick={() => navigate("/projects")}
               className="group relative flex items-center gap-3 px-8 py-3.5 
                          bg-gradient-to-r from-slate-700 to-slate-600
                          hover:from-cyan-500 hover:to-blue-500
@@ -250,12 +265,13 @@ export default function Portfolio() {
             >
               {/* Effet de brillance au survol */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></span>
-              
+
               <span className="relative z-10">View All Projects</span>
               <span className="relative z-10 transform transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
             </button>
+            
           </div>
 
           {/* Grille des projets */}
@@ -305,8 +321,6 @@ export default function Portfolio() {
               </div>
             ))}
           </div>
-
-       
         </div>
       </section>
 
@@ -426,20 +440,80 @@ export default function Portfolio() {
         </div>
       </footer>
 
-      <style>{`
+ <style>{`
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }
         }
+        
         @keyframes slide-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { 
+            opacity: 0; 
+            transform: translateY(30px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
         }
+        
+        @keyframes gradient-shift {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        
         .animate-fade-in {
           animation: fade-in 1s ease-out;
         }
+        
         .animate-slide-up {
           animation: slide-up 0.8s ease-out;
+        }
+        
+        .animate-slide-up-delayed {
+          animation: slide-up 0.8s ease-out 0.3s backwards;
+        }
+        
+        .animate-fade-in-delayed {
+          animation: fade-in 1s ease-out 0.6s backwards;
+        }
+        
+        .animate-fade-in-more-delayed {
+          animation: fade-in 1s ease-out 0.9s backwards;
+        }
+        
+        .animate-fade-in-icons {
+          animation: fade-in 1s ease-out 1.2s backwards;
+        }
+        
+        .animate-fade-in-button {
+          animation: fade-in 1s ease-out 1.5s backwards;
+        }
+        
+        @keyframes pulse-border {
+          0%, 100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.8;
+          }
+        }
+        
+        .animate-pulse-border {
+          animation: pulse-border 2s ease-in-out infinite;
+        }
+        
+        .animate-gradient-shift {
+          background-size: 200% 200%;
+          animation: slide-up 0.8s ease-out 0.3s backwards, 
+                     gradient-shift 3s ease infinite 1.1s;
         }
       `}</style>
     </div>
