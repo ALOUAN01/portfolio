@@ -405,7 +405,7 @@ export const getProjectById = (id) => {
 };
 
 export const getProjectImpo = () => {
-  const importantIds = [1, 2, 4];
+  const importantIds = [1, 2, 4,7];
   return projects.filter((project) => importantIds.includes(project.id));
 };
 
