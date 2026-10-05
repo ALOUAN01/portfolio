@@ -120,14 +120,15 @@ export const projects = [
       "Modular design allowing future extensions (parent portal, messaging, scheduling)",
     ],
 
-    media: [
-      { type: "image", src: "/images/ManageSchool.jpg" },
-      { type: "image", src: "/images/ManageSchool1.jpg" },
-      { type: "image", src: "/images/ManageSchool2.jpg" },
-      { type: "image", src: "/images/ManageSchool3.jpg" },
-      { type: "image", src: "/images/ManageSchool4.jpg" },
-    ],
+       cover: "/images/school-dashboard.png", // card image only
 
+    media: [
+      { type: "image", src: "/images/school-home.png" },
+      { type: "image", src: "/images/school-students.png" },
+      { type: "image", src: "/images/school-student-profile.png" },
+      { type: "image", src: "/images/school-classrooms.png" },
+      { type: "image", src: "/images/school-class-detail.png" },
+    ],
     githubUrl: "https://github.com/ALOUAN01/school-management",
     liveUrl: null,
 
