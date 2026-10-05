@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* Design tokens — one place to change the whole look */
+@theme {
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #f5f7f4; /* page background */
+  --color-surface: #ffffff; /* raised surfaces */
+  --color-ink: #142019; /* main text, primary buttons */
+  --color-muted: #56635b; /* secondary text */
+  --color-line: #dce3dd; /* borders, dividers */
+  --color-leaf: #2f7a2a; /* single accent (Spring green, darkened for contrast) */
+  --color-leaf-soft: #e4f0e0; /* accent tint */
+  --color-band: #142019; /* dark band (contact section, lightbox) */
+  --color-well: #eef1ed; /* screenshot background in the gallery */
+}
+
+/* Dark mode: same names, darker values. Set by the toggle in the navbar
+   (data-theme on <html>), defaulting to the visitor's system setting. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: #111814;
+  --color-surface: #18211b;
+  --color-ink: #e3eae4;
+  --color-muted: #9ba89f;
+  --color-line: #2a352e;
+  --color-leaf: #7cc46a;
+  --color-leaf-soft: #1e3221;
+  --color-band: #1a2a1f;
+  --color-well: #0c120e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-leaf-soft);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-leaf);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* The one orchestrated moment: hero elements rise in sequence on load */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
