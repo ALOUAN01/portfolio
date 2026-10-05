@@ -166,8 +166,15 @@ export const projects = [
       "Extensible architecture ready for more design patterns and AI integration",
     ],
 
-    media: [{ type: "video", src: "/videos/DPD-1.mp4", poster: "/images/DPD-1-poster.jpg" }],
+        cover: "/images/dpd-cover.png", // card image only
 
+    media: [
+      { type: "video", src: "/videos/dpd-demo.mp4", poster: "/images/dpd-analyze.png" },
+      { type: "image", src: "/images/dpd-results.png" },
+      { type: "image", src: "/images/dpd-refactor.png" },
+      { type: "image", src: "/images/dpd-manual.png" },
+      { type: "image", src: "/images/dpd-arch.png" },
+    ],
     githubUrl: "https://github.com/ALOUAN01/DPD", // met ton vrai dépôt ici si tu veux
     liveUrl: null,
 
@@ -206,12 +213,14 @@ export const projects = [
       "Fully containerized multi-service deployment with Docker Compose",
     ],
 
+       cover: "/images/scanercard-cover.png", // card image only
+
     media: [
-      { type: "video", src: "/videos/canerCard-Demo.mp4", poster: "/images/canerCard-Demo-poster.jpg" },
-      { type: "image", src: "/images/scanercard1.jpg" },
-      { type: "image", src: "/images/scanercard2.jpg" },
-      { type: "image", src: "/images/scanercard3.jpg" },
-      { type: "image", src: "/images/scanercard4.jpg" },
+      { type: "video", src: "/videos/scanercard-demo.mp4", poster: "/images/scanercard-scan.png" },
+      { type: "image", src: "/images/scanercard-results.png" },
+      { type: "image", src: "/images/scanercard-history.png" },
+      { type: "image", src: "/images/scanercard-api.png" },
+      { type: "image", src: "/images/scanercard-login.png" },
     ],
 
     githubUrl: "https://github.com/PFAProject01/", // dépôt indiqué dans ton rapport
