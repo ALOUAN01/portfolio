@@ -273,7 +273,109 @@ export const projects = [
   category: "Mobile / Full-Stack / Productivity",
   featured: false,
   date: "2023-06"
-}
+},
+  {
+    id: 7,
+    name: "ETL Platform – DataPull",
+    description:
+      "Scalable ETL platform that extracts, cleans, enriches and loads large business and customer datasets",
+
+    longDescription:
+      "The ETL Platform is the data processing engine of DataPull. It ingests data from public APIs, databases and files (CSV, JSON, Excel up to 10 GB), cleans and enriches it, then loads it into MongoDB, SQL databases and Elasticsearch. Jobs run asynchronously on Celery workers with Redis as broker and Celery Beat for scheduled runs, and a Flask web interface lets users upload files, configure jobs and follow their progress in real time. The stack was chosen after benchmarking Apache Airflow, Apache NiFi, AWS Glue and Celery + Flask.",
+
+    tech: [
+      "Python",
+      "Flask (REST API + Web UI)",
+      "Celery + Celery Beat",
+      "Redis",
+      "MongoDB",
+      "PostgreSQL / SQLAlchemy",
+      "Elasticsearch",
+      "Pandas",
+      "RapidFuzz",
+      "Docker & Docker Compose",
+      "Gunicorn",
+      "Flower",
+      "PyTest",
+    ],
+
+    highlights: [
+      "Modular Extract → Transform → Load pipeline (APIs, databases, CSV, JSON, Excel)",
+      "Handles files up to 10 GB, split into memory-bounded segments (2 GB limit per worker)",
+      "Asynchronous jobs on Celery workers with Redis broker and scheduled runs with Celery Beat",
+      "Standard and segmented queues chosen automatically by file size",
+      "Contact standardisation with RapidFuzz fuzzy matching (cities, countries, missing geo data)",
+      "Professional email discovery with 4 methods (WHOIS lookup, website extraction) and validation",
+      "Geographic enrichment with French department and region from the city",
+      "Sensitive fields encrypted with Fernet (cryptography)",
+      "Polyglot storage: MongoDB, SQL databases and Elasticsearch",
+      "Batch loading with transactions and idempotent operations",
+      "Real-time monitoring: dashboard, job management, API testing page and Flower",
+      "Dockerised, scaling horizontally and vertically with Docker Compose",
+    ],
+
+    media: [
+      { type: "image", src: "/images/etl-dashboard.jpg" },
+      { type: "image", src: "/images/etl-architecture.jpg" },
+      { type: "image", src: "/images/etl-jobs.jpg" },
+      { type: "image", src: "/images/etl-recent-data.jpg" },
+      { type: "image", src: "/images/etl-api-test.jpg" },
+    ],
+
+    githubUrl: null, // add your repository link here if it is public
+    liveUrl: null,
+
+    category: "Data Engineering / ETL",
+    featured: true,
+    date: "2025-07",
+  },
+    {
+    id: 8,
+    name: "PatternHunter – Design Pattern Detection with ML",
+    description:
+      "Machine learning models that detect which design pattern a Java code snippet implements",
+
+    longDescription:
+      "PatternHunter predicts which of 8 design patterns (Singleton, Abstract Factory, Factory Method, Strategy, Observer, Adapter, Decorator, Facade) a Java snippet implements. Three approaches are trained on the same 4,000-sample dataset and compared: a classic TF-IDF + SVM pipeline, a full fine-tuning of CodeBERT, and a LoRA fine-tuning (PEFT) that trains less than 1% of the weights. All three reach 100% on the synthetic test set; tests on hand-written code show where they still fail, which guides the next step: training on real-world code.",
+
+    tech: [
+      "Python",
+      "PyTorch",
+      "Hugging Face Transformers",
+      "CodeBERT",
+      "LoRA (PEFT)",
+      "scikit-learn",
+      "Pandas",
+      "Seaborn / Matplotlib",
+      "Google Colab (GPU T4)",
+    ],
+
+    highlights: [
+      "Classifies Java code into 8 design patterns with top-3 confidence scores",
+      "Dataset of 4,000 Java samples (500 per pattern), stratified 80 / 10 / 10 split",
+      "Code preprocessing to remove synthetic artefacts so models learn structure, not names",
+      "TF-IDF + SVM baseline: 1–3-gram code tokens, calibrated LinearSVC, trains in under 1 minute without GPU",
+      "CodeBERT full fine-tuning (125M parameters) with FP16, cosine scheduler and early stopping",
+      "LoRA fine-tuning on attention layers: only 1.19M parameters trained (0.94%), ~10 MB adapters",
+      "100% accuracy and F1 on the 400-sample test set for all 3 approaches",
+      "Tested on hand-written code to measure generalisation beyond the synthetic data",
+      "Decision guide comparing accuracy, speed, VRAM, model size and interpretability",
+    ],
+
+    media: [
+      { type: "image", src: "/images/patternhunter-pipeline.png" },
+      { type: "image", src: "/images/patternhunter-comparison.png" },
+      { type: "image", src: "/images/patternhunter-confusion.png" },
+      { type: "image", src: "/images/patternhunter-real-tests.png" },
+    ],
+
+    githubUrl: "https://github.com/ALOUAN01/PatternHunter",
+    liveUrl: null,
+
+    category: "AI / Machine Learning",
+    featured: true,
+    date: "2026-03",
+  },
 
 ];
 
