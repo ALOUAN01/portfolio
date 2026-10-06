@@ -17,6 +17,7 @@ export const experiences = [
     role: "Full-Stack Engineer",
     period: "Mar 2025 – Aug 2025",
     type: "Graduation Internship",
+    detailsUrl: "/internship/datapull", // "View more" page
     achievements: [
       "Developed and deployed 4 Spring Boot microservices handling up to 3,000 requests/min in production",
       "Engineered a high-performance ETL pipeline processing 2M+ leads/day (scraping → cleaning → enrichment → indexing)",

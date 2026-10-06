@@ -9,6 +9,7 @@ import {
   Languages,
   FileText,
   Check,
+  ArrowRight,
 } from "lucide-react";
 import myPhoto from "../assets/cv1.jpg";
 import cvEn from "../assets/ALOUAN_Ayoub_CV_E.pdf";
@@ -287,6 +288,15 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
+                    {exp.detailsUrl && (
+                      <Link
+                        to={exp.detailsUrl}
+                        className="mt-5 inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-4 py-2.5 text-sm font-medium transition-colors hover:border-ink hover:text-leaf"
+                      >
+                        View more: the full internship project
+                        <ArrowRight size={16} aria-hidden="true" />
+                      </Link>
+                    )}
                   </div>
                 </li>
               ))}

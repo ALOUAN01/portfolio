@@ -6,6 +6,7 @@ import SkillDetails from "./pages/SkillDetails";
 import CertifDetails from "./pages/CertifDetails";
 import AllProjects from "./pages/project";
 import ScrollToTop from "./pages/ScrollToTop.jsx";
+import InternshipDetails from "./pages/InternshipDetails";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route path="/skill/:id" element={<SkillDetails />} />
         <Route path="/certification/:id" element={<CertifDetails />} />
+        <Route path="/internship/datapull" element={<InternshipDetails />} />
       </Routes>
     </BrowserRouter>
   );
