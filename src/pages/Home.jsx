@@ -229,8 +229,18 @@ export default function Home() {
                   key={category}
                   className="grid gap-3 py-5 sm:grid-cols-[11rem_1fr] sm:gap-6"
                 >
-                  <dt className="font-display text-lg font-medium">
-                    {skillLabels[category] || category}
+                                    <dt>
+                    <span className="block font-display text-lg font-medium">
+                      {skillLabels[category] || category}
+                    </span>
+                    <Link
+                      to={`/skills/${category}`}
+                      className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-leaf underline-offset-4 hover:underline"
+                    >
+                      View more
+                      <span className="sr-only"> about {skillLabels[category] || category}</span>
+                      <ArrowRight size={14} aria-hidden="true" />
+                    </Link>
                   </dt>
                   <dd className="flex flex-wrap gap-2">
                     {items.map((skill) => (

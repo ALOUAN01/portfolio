@@ -7,6 +7,7 @@ import CertifDetails from "./pages/CertifDetails";
 import AllProjects from "./pages/project";
 import ScrollToTop from "./pages/ScrollToTop.jsx";
 import InternshipDetails from "./pages/InternshipDetails";
+import SkillCategory from "./pages/SkillCategory";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/projects" element={<AllProjects />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route path="/skill/:id" element={<SkillDetails />} />
+        <Route path="/skills/:category" element={<SkillCategory />} />
         <Route path="/certification/:id" element={<CertifDetails />} />
         <Route path="/internship/datapull" element={<InternshipDetails />} />
       </Routes>

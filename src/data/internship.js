@@ -23,7 +23,7 @@ export const internship = {
     { label: "Duration", value: "6 months" },
     { label: "Method", value: "Scrum · 8 sprints" },
     { label: "Role", value: "Full-stack & data engineer" },
-    { label: "Supervisors", value: "M. Ayoub Charef (EMSI)             ·M. Rabie El Kharaoua (IAWEB.DEV)" },
+    { label: "Supervisors", value: "M. Ayoub Charef (EMSI) · M. Rabie El Kharaoua (IAWEB.DEV)" },
   ],
 
   context: {
