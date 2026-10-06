@@ -19,8 +19,8 @@ export const experiences = [
     type: "Graduation Internship",
     detailsUrl: "/internship/datapull", // "View more" page
     achievements: [
-      "Developed and deployed 4 Spring Boot microservices handling up to 3,000 requests/min in production",
-      "Engineered a high-performance ETL pipeline processing 2M+ leads/day (scraping → cleaning → enrichment → indexing)",
+      "Developed and deployed 4 Spring Boot microservices handling up to 1,000 requests/min in production",
+      "Engineered a high-performance ETL pipeline processing 500K+ leads/day (scraping → cleaning → enrichment → indexing)",
       "Implemented real-time search capabilities with Elasticsearch and PostgreSQL",
       "Configured AWS cloud infrastructure achieving 90% uptime with automated monitoring (CloudWatch, S3, EC2)",
       "Contributed to the platform’s architecture design, observability, RBAC security, and CI/CD improvements"

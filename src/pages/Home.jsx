@@ -34,7 +34,7 @@ import {
   iconBtn,
 } from "../components/ui";
 
-/* Puts figures like "2M+", "3,000", "150ms", "60%" in bold so results stand out */
+/* Puts figures like "500K+", "1,000", "150ms", "60%" in bold so results stand out */
 function withMetrics(text) {
   // Skips codes like "B2B", "EC2" or "S3" (digit attached to letters)
   const parts = text.split(
