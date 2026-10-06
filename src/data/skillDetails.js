@@ -67,7 +67,7 @@ export const skillDetails = {
     tagline: "Pipelines that turn raw data into clean, usable data.",
     background: [
       "During my internship I worked on the full data chain of DataPull: collecting business data from public APIs, open datasets and scrapers, then cleaning, enriching and loading it.",
-      "I built the ETL application with Flask and Celery to process files of up to 10 GB, with fuzzy matching, email discovery and encryption of sensitive fields. I also use Python with Django REST for application backends.",
+      "I built the ETL application with Flask and Celery to process files of up to 5 GB, with fuzzy matching, email discovery and encryption of sensitive fields. I also use Python with Django REST for application backends.",
     ],
     tools: [
       { name: "Python", use: "Scrapers, API collectors, cleaning modules, ETL jobs and ML notebooks." },
@@ -83,7 +83,7 @@ export const skillDetails = {
       { company: "EKBlocks – Marrakech", how: "Django REST Framework APIs for the school management system." },
     ],
     projects: [
-      { id: 7, how: "Flask + Celery ETL platform for files up to 10 GB." },
+      { id: 7, how: "Flask + Celery ETL platform for files up to 5 GB." },
       { id: 1, how: "Data collection from APIs, open datasets and scrapers feeding the platform." },
       { id: 3, how: "Django REST Framework backend and data model." },
       { id: 4, how: "Django service for the AI analysis." },

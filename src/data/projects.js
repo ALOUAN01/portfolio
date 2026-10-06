@@ -291,7 +291,7 @@ export const projects = [
       "Scalable ETL platform that extracts, cleans, enriches and loads large business and customer datasets",
 
     longDescription:
-      "The ETL Platform is the data processing engine of DataPull. It ingests data from public APIs, databases and files (CSV, JSON, Excel up to 10 GB), cleans and enriches it, then loads it into MongoDB, SQL databases and Elasticsearch. Jobs run asynchronously on Celery workers with Redis as broker and Celery Beat for scheduled runs, and a Flask web interface lets users upload files, configure jobs and follow their progress in real time. The stack was chosen after benchmarking Apache Airflow, Apache NiFi, AWS Glue and Celery + Flask.",
+      "The ETL Platform is the data processing engine of DataPull. It ingests data from public APIs, databases and files (CSV, JSON, Excel up to 5 GB), cleans and enriches it, then loads it into MongoDB, SQL databases and Elasticsearch. Jobs run asynchronously on Celery workers with Redis as broker and Celery Beat for scheduled runs, and a Flask web interface lets users upload files, configure jobs and follow their progress in real time. The stack was chosen after benchmarking Apache Airflow, Apache NiFi, AWS Glue and Celery + Flask.",
 
     tech: [
       "Python",
@@ -311,7 +311,7 @@ export const projects = [
 
     highlights: [
       "Modular Extract → Transform → Load pipeline (APIs, databases, CSV, JSON, Excel)",
-      "Handles files up to 10 GB, split into memory-bounded segments (2 GB limit per worker)",
+      "Handles files up to 5 GB, split into memory-bounded segments (2 GB limit per worker)",
       "Asynchronous jobs on Celery workers with Redis broker and scheduled runs with Celery Beat",
       "Standard and segmented queues chosen automatically by file size",
       "Contact standardisation with RapidFuzz fuzzy matching (cities, countries, missing geo data)",

@@ -144,19 +144,20 @@ export const internship = {
         "Scheduled checks to pick up new dataset versions",
       ],
     },
-    {
-      title: "Web scraping",
+       {
+      title: "Web data collection",
       points: [
-        "Selenium and SeleniumBase for JavaScript-heavy pages and anti-bot protections",
-        "asyncio + aiohttp with a semaphore for parallel scraping",
-        "BeautifulSoup for parsing and Pandas for structuring the output",
-        "Rotating proxies, randomised user agents and human-like delays, with multi-layer error handling",
+        "Collection of publicly available business information from online business directories",
+        "Selenium for pages rendered with JavaScript, BeautifulSoup for parsing",
+        "asyncio + aiohttp with a concurrency limit to keep the load on each site low",
+        "Delays between requests, retries and error handling for long, stable runs",
+        "Output structured with Pandas and checked before entering the cleaning pipeline",
       ],
     },
     {
-      title: "Scraping fleet on AWS EC2",
+      title: "Collection jobs on AWS EC2",
       points: [
-        "Instances spread across several AWS regions to work around the limit of 5 static IPs per region",
+        "Collection jobs distributed across several EC2 instances to run in parallel",
         "Mix of t3.small and t3.medium instances to balance cost and performance",
         "Instances stopped after 8 hours and costs followed in AWS Cost Explorer",
       ],
@@ -190,7 +191,7 @@ export const internship = {
   ],
 
   etl: {
-    text: "A separate ETL application processes files up to 10 GB: Flask web interface and REST API, Celery workers with Redis as broker, Celery Beat for scheduled jobs, MongoDB, SQL databases and Elasticsearch as destinations. Large files are split into memory-bounded segments, and jobs are followed in real time on a dashboard and in Flower.",
+    text: "A separate ETL application processes files up to 5 GB: Flask web interface and REST API, Celery workers with Redis as broker, Celery Beat for scheduled jobs, MongoDB, SQL databases and Elasticsearch as destinations. Large files are split into memory-bounded segments, and jobs are followed in real time on a dashboard and in Flower.",
     image: "/images/internship/etl-architecture.jpg",
     projectId: 7, // link to the ETL project page if it exists
   },
