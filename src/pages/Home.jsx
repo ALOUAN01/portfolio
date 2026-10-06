@@ -173,7 +173,7 @@ export default function Home() {
                 I&apos;m a software engineer specialised in Java and Spring Boot
                 microservices, secured with Keycloak (RBAC, SSO). Most of my
                 recent work is large-scale data processing, with ETL pipelines
-                handling more than 2 million leads a day, deployed on AWS with
+                handling more than 500K leads a day, deployed on AWS with
                 Docker.
               </p>
               <p className="text-muted">

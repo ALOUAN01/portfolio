@@ -22,8 +22,8 @@ export const projects = [
 
     highlights: [
       "Distributed architecture with 4 autonomous and horizontally scalable microservices",
-      "3,000+ requests/min under real workload with load balancing & optimized caching",
-      "Big-Data ETL pipeline processing 2M+ records/day with intelligent enrichment",
+      "1,000+ requests/min under real workload with load balancing & optimized caching",
+      "Big-Data ETL pipeline processing 500K+ records/day with intelligent enrichment",
       "Sub-150ms real-time search powered by Elasticsearch (full-text & aggregations)",
       "Automated scraping + API integrations (INSEE, INPI, DataSoft)",
       "Email enrichment engine (MX validation, pattern discovery, scoring)",
