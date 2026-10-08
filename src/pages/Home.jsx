@@ -12,8 +12,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import myPhoto from "../assets/cv1.jpg";
-import cvEn from "../assets/ALOUAN_Ayoub_CV_E.pdf";
-import cvFr from "../assets/Alouan_Ayoub_CV_Java_FullStack_F.pdf";
+import cvEn from "../assets/Ayoub_Alouan_Resume_Software_Engineer.pdf";
+import cvFr from "../assets/Ayoub_Alouan_CV_Ingenieur_Logiciel.pdf";
 import Navbar from "./navbar";
 import { getAllSkills } from "../data/skills";
 import { getAllexperiences } from "../data/experiences";

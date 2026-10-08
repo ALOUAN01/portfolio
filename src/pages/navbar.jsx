@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, FileText, Sun, Moon } from "lucide-react";
-import myCV from "../assets/ALOUAN_Ayoub_CV_E.pdf";
+import myCV from "../assets/Ayoub_Alouan_Resume_Software_Engineer.pdf";
 import { profile } from "../data/profile";
 
 const navItems = [

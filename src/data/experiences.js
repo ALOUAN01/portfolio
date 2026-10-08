@@ -20,7 +20,7 @@ export const experiences = [
     detailsUrl: "/internship/datapull", // "View more" page
     achievements: [
       "Built the Spring Boot back end as 4 microservices (Gateway, B2B, B2C, Users) handling up to 1,000 requests/min, secured with Keycloak (SSO, RBAC, JWT)",
-      "Built Python ETL pipelines (Flask, Celery / Redis) that clean, normalise and enrich 500K+ leads a day, with files up to 10 GB",
+      "Built Python ETL pipelines (Flask, Celery / Redis) that clean, normalise and enrich 500K+ leads a day, with files up to 5 GB",
       "Collected data from public APIs and web pages (Selenium, BeautifulSoup, asyncio) and prototyped the first version with FastAPI and PostgreSQL",
       "Implemented real-time search with Elasticsearch and PostgreSQL: fuzzy queries, filters and aggregations",
       "Built the React front end (dashboards, interactive map, exports), tested with JUnit, Mockito and PyTest, and deployed with Docker on AWS EC2 / S3",
