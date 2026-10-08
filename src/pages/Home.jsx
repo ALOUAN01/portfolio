@@ -34,11 +34,20 @@ import {
   iconBtn,
 } from "../components/ui";
 
+/* Areas shown under the title in the hero */
+const focusAreas = [
+  "Backend · Java & Python",
+  "AI & LLMs",
+  "Data & ETL",
+  "Frontend",
+  "Cloud & DevOps",
+  "Testing & QA",
+];
 /* Puts figures like "500K+", "1,000", "150ms", "60%" in bold so results stand out */
 function withMetrics(text) {
   // Skips codes like "B2B", "EC2" or "S3" (digit attached to letters)
   const parts = text.split(
-    /((?<![A-Za-z\d])\d+(?:[.,]\d+)*(?:M\+|%\+?|\+|ms)?(?![A-Za-z\d]))/g
+    /((?<![A-Za-z\d])\d+(?:[.,]\d+)*(?:[KM]\+|%\+?|\+|ms)?(?![A-Za-z\d]))/g
   );
   return parts.map((part, i) =>
     i % 2 === 1 ? (
@@ -92,18 +101,32 @@ export default function Home() {
               className="rise mt-8 font-display text-xl font-medium sm:text-2xl"
               style={{ "--i": 1 }}
             >
-              Software engineer, Java &amp; Spring Boot
+                            Software engineer
             </p>
 
             <p
               className="rise mt-4 max-w-xl text-lg leading-relaxed text-muted"
               style={{ "--i": 2 }}
             >
-              I build backend systems that hold up under real load:
-              microservices, data pipelines processing millions of records a
-              day, and the React and AWS pieces around them.
+              I build software end to end: backend services in Java and Python,
+              data pipelines, AI features, web interfaces, and the tests and
+              cloud setup that keep them running in production.
             </p>
 
+            <ul
+              className="rise mt-5 flex max-w-xl flex-wrap gap-2"
+              style={{ "--i": 2 }}
+              aria-label="Areas I work in"
+            >
+              {focusAreas.map((area) => (
+                <li
+                  key={area}
+                  className="rounded-md border border-line bg-surface px-2.5 py-1 text-sm text-ink/80"
+                >
+                  {area}
+                </li>
+              ))}
+            </ul>
             <div
               className="rise mt-9 flex flex-wrap items-center gap-3"
               style={{ "--i": 3 }}
@@ -170,16 +193,20 @@ export default function Home() {
           <Section id="about" title="About">
             <div className="max-w-2xl space-y-5 text-lg leading-relaxed">
               <p>
-                I&apos;m a software engineer specialised in Java and Spring Boot
-                microservices, secured with Keycloak (RBAC, SSO). Most of my
-                recent work is large-scale data processing, with ETL pipelines
-                handling more than 500K leads a day, deployed on AWS with
-                Docker.
+                I&apos;m a software engineer who works across the whole
+                product, not just one layer. I build backend services in Java
+                (Spring Boot microservices, Keycloak security) and in Python
+                (Flask, FastAPI), data pipelines that process 500K+ leads a day,
+                and AI features on top of LLM APIs, such as a multi-agent
+                application that turns a plain-language request into a list of
+                leads.
               </p>
               <p className="text-muted">
-                On the frontend I work mainly with React. I care about
-                performance, clear architecture and software that solves a real
-                problem for the people using it.
+                I also build the interfaces in React, Next.js and Angular, test
+                what I ship (JUnit, PyTest, Postman, SonarQube) and deploy it
+                with Docker on AWS. What I care about is clear architecture and
+                software that solves a real problem for the people using it,
+                whatever the stack.
               </p>
             </div>
 
