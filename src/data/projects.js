@@ -123,6 +123,7 @@ export const projects = [
        cover: "/images/school-dashboard.png", // card image only
 
     media: [
+      
       { type: "image", src: "/images/school-home.png" },
       { type: "image", src: "/images/school-students.png" },
       { type: "image", src: "/images/school-student-profile.png" },
@@ -169,6 +170,7 @@ export const projects = [
         cover: "/images/dpd-cover.png", // card image only
 
     media: [
+      { type: "image", src: "/images/dpd-cover.png" },
       { type: "video", src: "/videos/dpd-demo.mp4", poster: "/images/dpd-analyze.png" },
       { type: "image", src: "/images/dpd-results.png" },
       { type: "image", src: "/images/dpd-refactor.png" },
@@ -216,6 +218,7 @@ export const projects = [
        cover: "/images/scanercard-cover.png", // card image only
 
     media: [
+      { type: "image", src: "/images/scanercard-cover.png" },
       { type: "video", src: "/videos/scanercard-demo.mp4", poster: "/images/scanercard-scan.png" },
       { type: "image", src: "/images/scanercard-results.png" },
       { type: "image", src: "/images/scanercard-history.png" },
@@ -386,6 +389,59 @@ export const projects = [
     featured: true,
     date: "2026-03",
   },
+    {
+    id: 9,
+    name: "JobHunter – AI Job Search Assistant",
+    description:
+      "Local AI-powered job search platform: offer matching, tailored cover letters, CV coaching and application tracking",
+
+    longDescription:
+      "JobHunter is a free, privacy-first job search platform powered by local AI agents running on the user's own GPU through Ollama. From a plain-language description of the desired role, it collects offers from several sources (JSearch, Adzuna, France Travail and Moroccan job boards), ranks them against the user's CVs with semantic embeddings, and lets specialized agents analyze each match, write tailored cover letters and emails live, adapt the CV to a specific offer, and prepare interviews. A full application tracker, an analytics dashboard and a conversational assistant that knows the user's profile, CVs and applications complete the workflow, all launched with a single click through Docker.",
+
+    tech: [
+      "FastAPI (Python)",
+      "Ollama (Qwen 2.5, nomic-embed-text)",
+      "SQLite",
+      "JavaScript, HTML & CSS",
+      "JSearch, Adzuna & France Travail APIs",
+      "APScheduler",
+      "Docker & Docker Compose",
+      "Pytest",
+    ],
+
+    highlights: [
+      "11 local AI agents (offer analysis, cover letters, emails, CV adaptation, interview prep, follow-ups) with no paid API",
+      "Free-text job search turned into structured criteria, aggregating offers from Morocco, France and international sources",
+      "Semantic CV/offer matching with embeddings, then detailed AI scoring (strengths, gaps, missing keywords)",
+      "Live-streamed cover letters and CV versions written word by word, with a strict no-fabrication rule",
+      "CV workspace: instant quality diagnostic, AI profile, keyword coverage per offer and Word export",
+      "Application tracker with pipeline, Kanban, follow-up reminders and the CV used for each application",
+      "Analytics dashboard: response rates, funnel, activity calendar, performance by source, CV and city",
+      "Chat assistant grounded in the user's profile, CVs, applications and statistics",
+      "GPU-accelerated local models (AMD/NVIDIA), light/dark themes and one-click launch scripts",
+    ],
+
+    cover: "/images/jobhunter-cover.png", // card image only
+
+        media: [
+      { type: "image", src: "/images/jobhunter-cover.png" },
+      { type: "video", src: "/videos/jobhunter-demo.mp4", poster: "/images/jobhunter-search.png" },
+      { type: "image", src: "/images/jobhunter-search.png" },
+      { type: "image", src: "/images/jobhunter-letter.png" },
+      { type: "image", src: "/images/jobhunter-applications.png" },
+      { type: "image", src: "/images/jobhunter-dashboard.png" },
+      { type: "image", src: "/images/jobhunter-cv.png" },
+      { type: "image", src: "/images/jobhunter-assistant.png" },
+      { type: "image", src: "/images/jobhunter-dark.png" },
+      { type: "image", src: "/images/jobhunter-arch.png" },
+    ],
+    githubUrl: "https://github.com/ALOUAN01/JobHunter", // remplace par ton vrai dépôt si le nom est différent
+    liveUrl: null,
+
+    category: "AI / Full-Stack / Productivity Tools",
+    featured: true,
+    date: "2026-11",
+  },
 
 ];
 
@@ -405,7 +461,7 @@ export const getProjectById = (id) => {
 };
 
 export const getProjectImpo = () => {
-  const importantIds = [1, 2, 4,7];
+  const importantIds = [9 ,1 ,2, 4 ,7]; // IDs des projets importants
   return projects.filter((project) => importantIds.includes(project.id));
 };
 
